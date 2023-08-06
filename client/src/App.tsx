@@ -1,9 +1,9 @@
-import Navbar from "./components/navbar/Navbar";
-import Home from "./pages/home/Home";
+import { Navbar } from "./components/navbar/Navbar";
+import { Home } from "./pages/home/Home";
 
 function App() {
   return (
-    <div className="font-grotesk min-h-[100vh] h-full w-full">
+    <div className="font-poppins min-h-[100vh] h-full w-full">
       <Navbar />
       <Home />
     </div>

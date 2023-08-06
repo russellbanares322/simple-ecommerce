@@ -1,11 +1,9 @@
 import { Hero } from "../../components/sections/hero/Hero";
 
-const Home = () => {
+export function Home() {
   return (
     <>
       <Hero />
     </>
   );
-};
-
-export default Home;
+}

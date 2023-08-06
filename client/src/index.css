@@ -1,14 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=VT323&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.page-padding-x {
-  @apply px-7 md:px-14 lg:px-16 xl:px-20 2xl:px-48;
+.page-margin-x {
+  @apply mx-7 md:mx-14 lg:mx-16 xl:mx-20 2xl:mx-48;
 }
 
 .page-padding-y {
   @apply py-6;
+}
+
+.button-filled-style {
+  @apply bg-soft-green text-white px-5 py-2 rounded-full text-sm;
+}
+.button-outlined-style {
+  @apply border border-soft-green text-black px-5 py-2 rounded-full text-sm hover:bg-soft-green hover:text-white duration-300 ease-in-out;
 }
 
 * {

@@ -8,7 +8,7 @@ import {
   HiX,
 } from "react-icons/hi";
 
-function Navbar() {
+export function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
 
   const handleOpenNavbar = () => {
@@ -19,7 +19,7 @@ function Navbar() {
     setIsNavOpen(false);
   };
   return (
-    <nav className="lg:flex lg:items-center page-padding-x page-padding-y z-50 w-full">
+    <nav className="lg:flex lg:items-center page-margin-x pt-5 pb-4 z-50 border-b border-b-gray mb-[0.1rem]">
       <div className="flex justify-between items-center lg:mr-[5rem]">
         <div className="flex items-center gap-2">
           <img className="w-11 h-11" src={logo} />
@@ -70,5 +70,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;

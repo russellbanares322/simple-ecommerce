@@ -10,7 +10,7 @@ export default {
         gray: "#F6F7F8",
       },
       fontFamily: {
-        grotesk: ['"Space Grotesk", sans-serif'],
+        poppins: ['"Poppins", sans-serif'],
       },
     },
   },
