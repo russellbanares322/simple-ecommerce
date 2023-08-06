@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.page-paddingX {
+  @apply px-9 md:px-20 lg:px-32 xl:px-36 2xl:px-48;
+}
+
+.page-paddingY {
+  @apply py-5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

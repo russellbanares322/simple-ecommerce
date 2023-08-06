@@ -1,8 +1,12 @@
+import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+
 function App() {
   return (
-    <>
-      <h1>Hi</h1>
-    </>
+    <div className="page-paddingX page-paddingY font-grotesk">
+      <Navbar />
+      <Home />
+    </div>
   );
 }
 
