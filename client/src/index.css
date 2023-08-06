@@ -3,12 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.page-paddingX {
-  @apply px-9 md:px-20 lg:px-32 xl:px-36 2xl:px-48;
+.page-padding-x {
+  @apply px-7 md:px-14 lg:px-16 xl:px-20 2xl:px-48;
 }
 
-.page-paddingY {
-  @apply py-5;
+.page-padding-y {
+  @apply py-6;
 }
 
 * {

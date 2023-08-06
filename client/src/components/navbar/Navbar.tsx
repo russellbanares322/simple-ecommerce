@@ -1,46 +1,71 @@
+import { useState } from "react";
 import logo from "../../assets/logo.png";
 import {
   HiMenu,
   HiOutlineSearch,
   HiOutlineUser,
   HiOutlineShoppingCart,
+  HiX,
 } from "react-icons/hi";
 
 function Navbar() {
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+
+  const handleOpenNavbar = () => {
+    setIsNavOpen(true);
+  };
+
+  const handleCloseNavbar = () => {
+    setIsNavOpen(false);
+  };
   return (
-    <nav className="flex justify-between items-center w-full gap-2">
-      <div className="flex justify-between items-center">
-        <div className="flex justify-center items-center gap-2">
-          <img className="h-12 w-14 object-contain" src={logo} alt="logo" />
-          <h1 className="font-bold text-xl text-soft-green cursor-pointer">
-            Shopcart
-          </h1>
+    <nav className="lg:flex lg:items-center page-padding-x page-padding-y z-50 w-full">
+      <div className="flex justify-between items-center lg:mr-[5rem]">
+        <div className="flex items-center gap-2">
+          <img className="w-11 h-11" src={logo} />
+          <h1 className="font-bold text-2xl">Shopcart</h1>
         </div>
-        <HiMenu className="text-xl visible md:hidden" />
+        {!isNavOpen && (
+          <HiMenu
+            onClick={handleOpenNavbar}
+            className="text-2xl visible lg:hidden cursor-pointer"
+          />
+        )}
+        {isNavOpen && (
+          <HiX
+            onClick={handleCloseNavbar}
+            className="text-2xl visible lg:hidden cursor-pointer"
+          />
+        )}
       </div>
-      <ul className="hidden md:flex md:justify-center md:items-center gap-7 ml-5 text-sm font-medium">
-        <li className="cursor-pointer">Categories</li>
-        <li className="cursor-pointer">Deals</li>
-        <li className="cursor-pointer">What's New</li>
-        <li className="cursor-pointer">Delivery</li>
-      </ul>
-      <div className="relative hidden md:block">
-        <input
-          className="bg-gray px-5 py-2 rounded-full outline-none text-sm w-72 font-medium"
-          placeholder="Search product"
-          type="text"
-        />
-        <HiOutlineSearch className="text-lg absolute top-[0.6rem] right-5" />
-      </div>
-      <div className="justify-center items-center gap-5 text-sm font-medium hidden md:flex">
-        <p className="flex gap-1 cursor-pointer">
-          <HiOutlineUser className="text-lg" />
-          Account
-        </p>
-        <p className="flex gap-1 cursor-pointer">
-          <HiOutlineShoppingCart className="text-lg" />
-          Cart
-        </p>
+      <div
+        className={`${
+          isNavOpen ? "translate-y-0" : "translate-y-[-200%]"
+        } pb-7 lg:pb-0 shadow-md lg:shadow-none border-t border-t-soft-green lg:border-none mt-2 pt-5 lg:pt-0 lg:mt-0 bg-white lg:translate-y-0 lg:h-full lg:opacity-100 absolute left-0 z-50 flex w-full flex-col items-center transition-all duration-300 ease-in-out lg:static lg:flex lg:justify-start lg:flex-row lg:items-center gap-7 text-sm`}
+      >
+        <ul className="flex-col lg:flex-row lg:flex lg:items-center gap-9 text-[0.95rem] mr-0 lg:mr-auto font-medium">
+          <li className="cursor-pointer my-5 lg:my-0">Categories</li>
+          <li className="cursor-pointer my-5 lg:my-0">Deals</li>
+          <li className="cursor-pointer my-5 lg:my-0">What's New</li>
+          <li className="cursor-pointer">Delivery</li>
+        </ul>
+        <div className="mr-2 lg:mr-auto relative">
+          <input
+            className="bg-gray rounded-full px-4 py-2 text-sm w-72 outline-none"
+            placeholder="Search product"
+          />
+          <HiOutlineSearch className="absolute top-[0.55rem] right-4 text-lg" />
+        </div>
+        <div className="flex items-center gap-5">
+          <p className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer">
+            <HiOutlineUser className="text-xl" />
+            Account
+          </p>
+          <p className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer">
+            <HiOutlineShoppingCart className="text-xl" />
+            Cart
+          </p>
+        </div>
       </div>
     </nav>
   );
