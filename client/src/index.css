@@ -12,10 +12,10 @@
 }
 
 .button-filled-style {
-  @apply bg-soft-green text-white px-5 py-2 rounded-full text-sm;
+  @apply bg-soft-green text-white px-7 py-3 rounded-full text-sm;
 }
 .button-outlined-style {
-  @apply border border-soft-green text-black px-5 py-2 rounded-full text-sm hover:bg-soft-green hover:text-white duration-300 ease-in-out;
+  @apply border border-soft-green text-black px-7 py-3 rounded-full text-sm hover:bg-soft-green hover:text-white duration-300 ease-in-out;
 }
 
 * {

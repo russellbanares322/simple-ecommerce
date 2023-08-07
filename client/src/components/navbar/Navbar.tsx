@@ -19,7 +19,7 @@ export function Navbar() {
     setIsNavOpen(false);
   };
   return (
-    <nav className="lg:flex lg:items-center page-margin-x pt-5 pb-4 z-50 border-b border-b-gray mb-[0.1rem]">
+    <nav className="lg:flex lg:items-center page-margin-x pt-5 pb-4 z-50">
       <div className="flex justify-between items-center lg:mr-[5rem]">
         <div className="flex items-center gap-2">
           <img className="w-11 h-11" src={logo} />

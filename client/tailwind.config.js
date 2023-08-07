@@ -8,9 +8,14 @@ export default {
         green: "#05A607",
         black: "#000000",
         gray: "#F6F7F8",
+        cyan: "#A5D1E6",
+        brown: "#C6B195",
       },
       fontFamily: {
         poppins: ['"Poppins", sans-serif'],
+      },
+      content: {
+        wave: "url(./src/assets/wave.svg)",
       },
     },
   },
