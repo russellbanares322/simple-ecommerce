@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg from "../../../assets/hero-img.png";
+import CreditCard from "../../../assets/CreditCard";
 
 const Hero: React.FC = () => {
   return (
@@ -14,10 +14,7 @@ const Hero: React.FC = () => {
         </p>
         <button className="button-filled-style">Learn More</button>
       </div>
-      <img
-        className="object-cover bg-center absolute md:top-24 right-16 md:h-[24rem] hidden md:block"
-        src={heroImg}
-      />
+      <CreditCard />
     </div>
   );
 };
