@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import {
   HiMenu,
@@ -8,7 +8,7 @@ import {
   HiX,
 } from "react-icons/hi";
 
-export function Navbar() {
+const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
 
   const handleOpenNavbar = () => {
@@ -69,4 +69,6 @@ export function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
