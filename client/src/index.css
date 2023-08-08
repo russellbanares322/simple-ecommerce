@@ -12,7 +12,7 @@
 }
 
 .page-padding-x {
-  @apply px-[2rem] lg:px-[7rem];
+  @apply px-[2rem] lg:px-[5rem];
 }
 
 .button-filled-style {

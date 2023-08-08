@@ -2,7 +2,7 @@ import React from "react";
 
 const CreditCard: React.FC = () => {
   return (
-    <div className="absolute md:top-14 right-[0.01rem] hidden md:block">
+    <div className="absolute md:top-24 right-[0.01rem] hidden md:block">
       <svg
         width="750"
         height="450"
