@@ -6,20 +6,23 @@
 .page-margin-x {
   @apply mx-7 md:mx-14 lg:mx-16 xl:mx-20 2xl:mx-48;
 }
-
 .page-padding-y {
   @apply py-6;
 }
-
 .page-padding-x {
   @apply px-[2rem] lg:px-[5rem];
 }
-
 .button-filled-style {
   @apply bg-soft-green text-white px-5 py-2 lg:px-7 lg:py-3 rounded-full text-sm;
 }
 .button-outlined-style {
   @apply border border-soft-green text-black px-5 py-2 lg:px-7 lg:py-3 rounded-full text-sm hover:bg-soft-green hover:text-white duration-300 ease-in-out;
+}
+.section-title {
+  @apply font-semibold text-black text-3xl;
+}
+.section-padding-y {
+  @apply py-24;
 }
 
 * {

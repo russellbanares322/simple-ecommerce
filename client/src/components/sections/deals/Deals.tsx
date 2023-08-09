@@ -1,6 +1,6 @@
 import React from "react";
 const Deals: React.FC = () => {
-  return <div>Deals</div>;
+  return <div></div>;
 };
 
 export default Deals;
