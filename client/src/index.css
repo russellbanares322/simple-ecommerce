@@ -22,7 +22,7 @@
   @apply font-semibold text-black text-3xl;
 }
 .section-padding-y {
-  @apply py-24;
+  @apply py-16;
 }
 
 * {
