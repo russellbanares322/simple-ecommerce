@@ -34,7 +34,7 @@ const CategoriesSection: React.FC = () => {
                 className="img-style object-cover hover:scale-[1.1] duration-200 ease-in-out"
                 src={categoryData.thumbnail}
               />
-              <p className="uppercase absolute top-2 text-black font-medium left-2 text-sm bg-cyan px-2">
+              <p className="uppercase absolute top-2 text-white font-medium left-2 text-sm bg-secondary-green px-2">
                 {categoryData.category}
               </p>
             </div>
