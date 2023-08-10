@@ -28,10 +28,10 @@ const CategoriesSection: React.FC = () => {
       <p className="section-title">Shop Our Top Categories</p>
       <div className="mt-10 grid grid-cols md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-6 justify-center align-middle">
         {categories.map((categoryData) => (
-          <div className="mt-6" key={categoryData.id}>
+          <div key={categoryData.id}>
             <div className="relative w-full rounded-lg overflow-hidden shadow-xl">
               <img
-                className="w-[16rem] h-[15rem] object-cover hover:scale-[1.1] duration-200 ease-in-out"
+                className="img-style object-cover hover:scale-[1.1] duration-200 ease-in-out"
                 src={categoryData.thumbnail}
               />
               <p className="uppercase absolute top-2 text-black font-medium left-2 text-sm bg-cyan px-2">

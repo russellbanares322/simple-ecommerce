@@ -10,6 +10,7 @@ export default {
         gray: "#F6F7F8",
         cyan: "#A5D1E6",
         brown: "#C6B195",
+        "secondary-green": "#08AC0A",
       },
       fontFamily: {
         poppins: ['"Poppins", sans-serif'],

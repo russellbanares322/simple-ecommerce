@@ -14,6 +14,7 @@ const Deals: React.FC = () => {
       description: item.description,
       price: item.price,
       rating: item.rating,
+      thumbnail: item.thumbnail,
     }));
 
     setDeals(dealsData);
@@ -24,8 +25,8 @@ const Deals: React.FC = () => {
   }, []);
   return (
     <div className="section-padding-y page-padding-x">
-      <p className="section-title">Shop Our Top Categories</p>
-      <div>
+      <p className="section-title">Todays Best Deals For You</p>
+      <div className="flex items-center mt-12 gap-12 flex-wrap justify-center md:justify-start">
         {deals?.map((deal) => (
           <DealsCard key={deal.id} {...deal} />
         ))}

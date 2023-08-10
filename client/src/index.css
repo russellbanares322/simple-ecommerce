@@ -21,6 +21,9 @@
 .section-title {
   @apply font-semibold text-black text-3xl;
 }
+.img-style {
+  @apply object-cover h-[15rem] w-[16rem];
+}
 .section-padding-y {
   @apply py-16;
 }
