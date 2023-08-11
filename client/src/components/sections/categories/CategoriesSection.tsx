@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import getProducts from "../../../proxies/getProducts";
+import useProduct from "../../../store/productStore/useProduct";
 import { TCategories } from "./types";
 
 const CategoriesSection: React.FC = () => {
   const [categories, setCategories] = useState<TCategories[]>([]);
+  const { getProducts, products } = useProduct();
 
-  const getProductCategories = async () => {
-    const data = await getProducts();
-    const categoriesData = data.map((item: any) => ({
+  useEffect(() => {
+    getProducts();
+    const categoriesData = products.map((item: any) => ({
       id: item.id,
       category: item.category,
       thumbnail: item.thumbnail,
@@ -17,10 +18,6 @@ const CategoriesSection: React.FC = () => {
       .slice(0, 6);
 
     setCategories(randomlySortedCategories);
-  };
-
-  useEffect(() => {
-    getProductCategories();
   }, []);
 
   return (

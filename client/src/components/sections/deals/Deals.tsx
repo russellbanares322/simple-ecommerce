@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import getProducts from "../../../proxies/getProducts";
+import useProduct from "../../../store/productStore/useProduct";
 import DealsCard from "./DealsCard";
 import { TDeals } from "./types";
 
 const Deals: React.FC = () => {
   const [deals, setDeals] = useState<TDeals[]>([]);
+  const { getProducts, products } = useProduct();
 
-  const getDeals = async () => {
-    const data = await getProducts();
-    const dealsData = data?.slice(0, 6).map((item: any) => ({
+  useEffect(() => {
+    getProducts();
+    const dealsData = products.slice(0, 6).map((item: any) => ({
       id: item.id,
       title: item.title,
       description: item.description,
@@ -16,13 +17,9 @@ const Deals: React.FC = () => {
       rating: item.rating,
       thumbnail: item.thumbnail,
     }));
-
     setDeals(dealsData);
-  };
-
-  useEffect(() => {
-    getDeals();
   }, []);
+
   return (
     <div className="section-padding-y page-padding-x">
       <p className="section-title">Todays Best Deals For You</p>

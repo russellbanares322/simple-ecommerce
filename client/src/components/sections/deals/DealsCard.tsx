@@ -1,6 +1,8 @@
 import React from "react";
 import { TDeals } from "./types";
-import { HiStar } from "react-icons/hi";
+import { RiStarFill, RiStarHalfFill } from "react-icons/ri";
+import { HiOutlineHeart } from "react-icons/hi";
+import useCart from "../../../store/cartStore/useCart";
 
 const DealsCard: React.FC<TDeals> = ({
   id,
@@ -10,12 +12,29 @@ const DealsCard: React.FC<TDeals> = ({
   rating,
   thumbnail,
 }) => {
+  const { cart, addToCart } = useCart();
+  const productsData = {
+    id,
+    title,
+    description,
+    price,
+    rating,
+    thumbnail,
+  };
+  const isProductAdded = cart.some((product) => product.id === id);
+  const ratingHasRemainder = rating % 2 !== 0;
   return (
     <div className="w-[22rem] h-[30rem]">
-      <div className="bg-gray p-2 rounded-md">
+      <div className="bg-gray p-2 rounded-md relative">
         <img
           className="object-cover w-[22rem] h-[19rem] duration-300 ease-in-out rounded-md"
           src={thumbnail}
+        />
+        <HiOutlineHeart
+          onClick={() => addToCart(productsData)}
+          className={`${
+            isProductAdded ? "fill-green text-green" : "text-black fill-white"
+          } text-[2.3rem] shadow-lg rounded-full bg-white absolute top-5 right-6 p-2 cursor-pointer`}
         />
       </div>
       <div className="flex justify-between items-center my-2">
@@ -26,8 +45,11 @@ const DealsCard: React.FC<TDeals> = ({
       <div className="flex items-center gap-2">
         <div className="flex justify-start items-center my-2">
           {Array.from({ length: Math.floor(rating) }).map((_) => (
-            <HiStar key={id} className="text-secondary-green text-lg" />
+            <RiStarFill key={id} className="text-secondary-green text-lg" />
           ))}
+          {ratingHasRemainder && (
+            <RiStarHalfFill className="text-secondary-green text-lg" />
+          )}
         </div>
         <p className="text-xs">({rating})</p>
       </div>
