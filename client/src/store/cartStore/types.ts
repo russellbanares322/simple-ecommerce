@@ -13,6 +13,6 @@ export type TCartProps = {
 }
 
 export type TCart = {
-    cart: TCartProps[],
+    cartItems: TCartProps[],
     addToCart: (productsData:TCartProps) => void,
 }

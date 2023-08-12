@@ -13,8 +13,8 @@ import Cart from "../cart/Cart";
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-  const { cart } = useCart();
-  const cartLength = cart.length;
+  const { cartItems } = useCart();
+  const cartItemsCount = cartItems.length;
   const handleOpenNavbar = () => {
     setIsNavOpen(true);
   };
@@ -74,9 +74,9 @@ const Navbar: React.FC = () => {
           <div className="relative">
             <p
               onClick={handleToggleCart}
-              after-dynamic-value={cartLength}
+              after-dynamic-value={cartItemsCount}
               className={`${
-                cartLength === 0 ? "after:hidden" : "after:block"
+                cartItemsCount === 0 ? "after:hidden" : "after:block"
               } text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer relative after:absolute after:-top-2 after:px-2 after:py-[0.12rem] after:-right-6 after:bg-soft-green after:text-white after:rounded-full after:text-xs after:content-[attr(after-dynamic-value)] after:cursor-auto`}
             >
               <HiOutlineShoppingCart className="text-xl" />

@@ -12,7 +12,7 @@ const DealsCard: React.FC<TDeals> = ({
   rating,
   thumbnail,
 }) => {
-  const { cart, addToCart } = useCart();
+  const { cartItems, addToCart } = useCart();
   const productsData = {
     id,
     title,
@@ -21,7 +21,7 @@ const DealsCard: React.FC<TDeals> = ({
     rating,
     thumbnail,
   };
-  const isProductAdded = cart.some((product) => product.id === id);
+  const isProductAdded = cartItems.some((product) => product.id === id);
   const ratingHasRemainder = rating % 2 !== 0;
   return (
     <div className="w-[22rem] h-[30rem]">
