@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useProduct from "../../../store/productStore/useProduct";
 import DealsCard from "./DealsCard";
-import { TDeals } from "./types";
+import { TDealsProps } from "./types";
 
 const Deals: React.FC = () => {
   const { getProducts, products } = useProduct();
@@ -9,8 +9,9 @@ const Deals: React.FC = () => {
     getProducts();
   }, [getProducts]);
 
-  const dealsData: TDeals[] = products.slice(0, 6).map((item: any) => ({
+  const dealsData: TDealsProps[] = products.slice(0, 6).map((item: any) => ({
     id: item.id,
+    quantity: item.quantity,
     title: item.title,
     description: item.description,
     price: item.price,

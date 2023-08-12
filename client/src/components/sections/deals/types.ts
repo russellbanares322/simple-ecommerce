@@ -1,5 +1,6 @@
-export type TDeals = {
+export type TDealsProps = {
     id:number,
+    quantity:number,
     title:string,
     description:string,
     price:number,

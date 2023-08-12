@@ -18,6 +18,7 @@ const Cart: React.FC<TCartElementProps> = ({ isCartOpen }) => {
           cartItems?.map((cartItem) => (
             <CartItems
               key={cartItem.id}
+              quantity={cartItem.quantity}
               id={cartItem.id}
               thumbnail={cartItem.thumbnail}
               price={cartItem.price}

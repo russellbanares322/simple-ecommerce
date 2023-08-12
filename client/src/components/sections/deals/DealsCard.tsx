@@ -1,11 +1,12 @@
 import React from "react";
-import { TDeals } from "./types";
+import { TDealsProps } from "./types";
 import { RiStarFill, RiStarHalfFill } from "react-icons/ri";
 import { HiOutlineHeart } from "react-icons/hi";
 import useCart from "../../../store/cartStore/useCart";
 
-const DealsCard: React.FC<TDeals> = ({
+const DealsCard: React.FC<TDealsProps> = ({
   id,
+  quantity,
   title,
   description,
   price,
@@ -15,6 +16,7 @@ const DealsCard: React.FC<TDeals> = ({
   const { cartItems, addToCart } = useCart();
   const productsData = {
     id,
+    quantity,
     title,
     description,
     price,

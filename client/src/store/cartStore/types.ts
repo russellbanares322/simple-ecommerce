@@ -5,6 +5,7 @@ export type TCartElementProps = {
 
 export type TCartProps = {
     id:number,
+    quantity: number,
     title:string,
     description:string,
     price:number,
