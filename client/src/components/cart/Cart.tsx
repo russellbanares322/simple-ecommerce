@@ -1,10 +1,12 @@
 import React from "react";
-import { TCartElementProps } from "../../store/cartStore/types";
 import useCart from "../../store/cartStore/useCart";
 import CartItems from "./CartItems";
+import { TCartElementProps } from "./types";
 
 const Cart: React.FC<TCartElementProps> = ({ isCartOpen }) => {
   const { cartItems } = useCart();
+  const isCartEmpty = cartItems.length === 0;
+
   return (
     <div
       className={`${
@@ -12,12 +14,13 @@ const Cart: React.FC<TCartElementProps> = ({ isCartOpen }) => {
       } duration-200 ease-in-out absolute bg-white shadow-md px-2 py-4 right-0 rounded-md`}
     >
       <div className="w-[20rem]">
-        {cartItems?.length === 0 ? (
+        {isCartEmpty ? (
           <p className="text-center">You have no products saved yet</p>
         ) : (
           cartItems?.map((cartItem) => (
             <CartItems
               key={cartItem.id}
+              inputPrice={cartItem.inputPrice}
               quantity={cartItem.quantity}
               id={cartItem.id}
               thumbnail={cartItem.thumbnail}

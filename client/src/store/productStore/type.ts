@@ -1,5 +1,6 @@
 export type TProductProps = {
     id:number,
+    inputPrice: number,
     quantity:number,
     title:string,
     description:string,

@@ -6,6 +6,7 @@ import useCart from "../../../store/cartStore/useCart";
 
 const DealsCard: React.FC<TDealsProps> = ({
   id,
+  inputPrice,
   quantity,
   title,
   description,
@@ -16,6 +17,7 @@ const DealsCard: React.FC<TDealsProps> = ({
   const { cartItems, addToCart } = useCart();
   const productsData = {
     id,
+    inputPrice,
     quantity,
     title,
     description,
@@ -41,7 +43,7 @@ const DealsCard: React.FC<TDealsProps> = ({
       </div>
       <div className="flex justify-between items-center my-2">
         <p className="text-lg font-medium">{title}</p>
-        <p className="text-lg font-medium">{price}</p>
+        <p className="text-lg font-medium">₱{price}.00</p>
       </div>
       <p className="text-xs">{description}</p>
       <div className="flex items-center gap-2">

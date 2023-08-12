@@ -11,6 +11,7 @@ const Deals: React.FC = () => {
 
   const dealsData: TDealsProps[] = products.slice(0, 6).map((item: any) => ({
     id: item.id,
+    inputPrice: item.inputPrice,
     quantity: item.quantity,
     title: item.title,
     description: item.description,
