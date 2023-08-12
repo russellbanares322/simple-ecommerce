@@ -7,11 +7,14 @@ import {
   HiOutlineShoppingCart,
   HiX,
 } from "react-icons/hi";
+import useCart from "../../store/cartStore/useCart";
+import Cart from "../cart/Cart";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-
+  const { cart } = useCart();
+  const cartLength = cart.length;
   const handleOpenNavbar = () => {
     setIsNavOpen(true);
   };
@@ -19,8 +22,8 @@ const Navbar: React.FC = () => {
     setIsNavOpen(false);
   };
 
-  const handleOpenCart = () => {
-    setIsCartOpen(true);
+  const handleToggleCart = () => {
+    setIsCartOpen(!isCartOpen);
   };
   const handleCloseCart = () => {
     setIsCartOpen(false);
@@ -68,11 +71,18 @@ const Navbar: React.FC = () => {
             <HiOutlineUser className="text-xl" />
             Account
           </p>
-          <div>
-            <p className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer relative after:absolute after:-top-2 after:px-2 after:py-[0.12rem] after:-right-6 after:bg-soft-green after:text-white after:rounded-full after:text-xs after:content-['3']">
+          <div className="relative">
+            <p
+              onClick={handleToggleCart}
+              after-dynamic-value={cartLength}
+              className={`${
+                cartLength === 0 ? "after:hidden" : "after:block"
+              } text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer relative after:absolute after:-top-2 after:px-2 after:py-[0.12rem] after:-right-6 after:bg-soft-green after:text-white after:rounded-full after:text-xs after:content-[attr(after-dynamic-value)] after:cursor-auto`}
+            >
               <HiOutlineShoppingCart className="text-xl" />
               Cart
             </p>
+            <Cart isCartOpen={isCartOpen} handleCloseCart={handleCloseCart} />
           </div>
         </div>
       </div>

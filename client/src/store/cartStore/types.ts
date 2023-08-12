@@ -1,3 +1,8 @@
+export type TCartElementProps = {
+    isCartOpen: boolean,
+    handleCloseCart: () => void
+}
+
 export type TCartProps = {
     id:number,
     title:string,
@@ -9,5 +14,5 @@ export type TCartProps = {
 
 export type TCart = {
     cart: TCartProps[],
-    addToCart: (productsData:TCartProps) => void
+    addToCart: (productsData:TCartProps) => void,
 }

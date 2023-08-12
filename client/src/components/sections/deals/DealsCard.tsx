@@ -44,8 +44,8 @@ const DealsCard: React.FC<TDeals> = ({
       <p className="text-xs">{description}</p>
       <div className="flex items-center gap-2">
         <div className="flex justify-start items-center my-2">
-          {Array.from({ length: Math.floor(rating) }).map((_) => (
-            <RiStarFill key={id} className="text-secondary-green text-lg" />
+          {Array.from({ length: Math.floor(rating) }).map((_, index) => (
+            <RiStarFill key={index} className="text-secondary-green text-lg" />
           ))}
           {ratingHasRemainder && (
             <RiStarHalfFill className="text-secondary-green text-lg" />
