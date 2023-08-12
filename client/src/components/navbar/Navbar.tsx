@@ -10,13 +10,20 @@ import {
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
 
   const handleOpenNavbar = () => {
     setIsNavOpen(true);
   };
-
   const handleCloseNavbar = () => {
     setIsNavOpen(false);
+  };
+
+  const handleOpenCart = () => {
+    setIsCartOpen(true);
+  };
+  const handleCloseCart = () => {
+    setIsCartOpen(false);
   };
   return (
     <nav className="lg:flex lg:items-center page-margin-x pt-5 pb-4 z-50">
@@ -61,10 +68,12 @@ const Navbar: React.FC = () => {
             <HiOutlineUser className="text-xl" />
             Account
           </p>
-          <p className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer">
-            <HiOutlineShoppingCart className="text-xl" />
-            Cart
-          </p>
+          <div>
+            <p className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer relative after:absolute after:-top-2 after:px-2 after:py-[0.12rem] after:-right-6 after:bg-soft-green after:text-white after:rounded-full after:text-xs after:content-['3']">
+              <HiOutlineShoppingCart className="text-xl" />
+              Cart
+            </p>
+          </div>
         </div>
       </div>
     </nav>
