@@ -31,7 +31,7 @@ const DealsCard: React.FC<TDealsProps> = ({
     <div className="max-w-[1640px] py-4">
       <div className="bg-gray p-2 rounded-md relative">
         <img
-          className="object-cover h-[19rem] duration-300 ease-in-out rounded-md"
+          className="object-cover h-[19rem] w-full duration-300 ease-in-out rounded-md"
           src={thumbnail}
         />
         <HiOutlineHeart
