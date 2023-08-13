@@ -19,7 +19,7 @@ const CategoriesSection: React.FC = () => {
     .slice(0, 6);
 
   return (
-    <div className="section-padding-y page-padding-x">
+    <div className="section-padding-y max-w-[1640px] p-4">
       <p className="section-title">Shop Our Top Categories</p>
       <div className="mt-10 grid grid-cols md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-6 gap-6 justify-center align-middle">
         {randomlySortedCategories.map((categoryData) => (

@@ -25,20 +25,18 @@ const DealsCard: React.FC<TDealsProps> = ({
     rating,
     thumbnail,
   };
-  const isProductAdded = cartItems.some((product) => product.id === id);
+  const isProductInCart = cartItems.some((cartItem) => cartItem.id === id);
   const ratingHasRemainder = rating % 2 !== 0;
   return (
-    <div className="w-[22rem] h-[30rem]">
+    <div className="max-w-[1640px] py-4">
       <div className="bg-gray p-2 rounded-md relative">
         <img
-          className="object-cover w-[22rem] h-[19rem] duration-300 ease-in-out rounded-md"
+          className="object-cover h-[19rem] duration-300 ease-in-out rounded-md"
           src={thumbnail}
         />
         <HiOutlineHeart
           onClick={() => addToCart(productsData)}
-          className={`${
-            isProductAdded ? "fill-green text-green" : "text-black fill-white"
-          } text-[2.3rem] shadow-lg rounded-full bg-white absolute top-5 right-6 p-2 cursor-pointer`}
+          className=" text-[2.3rem] shadow-lg rounded-full bg-white absolute top-5 right-6 p-2"
         />
       </div>
       <div className="flex justify-between items-center my-2">
@@ -57,7 +55,12 @@ const DealsCard: React.FC<TDealsProps> = ({
         </div>
         <p className="text-xs">({rating})</p>
       </div>
-      <button className="button-outlined-style my-2">Add to Cart</button>
+      <button
+        onClick={() => addToCart(productsData)}
+        className="button-outlined-style my-2"
+      >
+        {isProductInCart ? "Remove from Cart" : "Add to Cart"}
+      </button>
     </div>
   );
 };

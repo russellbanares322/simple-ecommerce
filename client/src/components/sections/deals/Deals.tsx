@@ -21,9 +21,9 @@ const Deals: React.FC = () => {
   }));
 
   return (
-    <div className="section-padding-y page-padding-x">
+    <div className="section-padding-y max-w-[1640px] p-4">
       <p className="section-title">Todays Best Deals For You</p>
-      <div className="flex items-center mt-12 gap-12 flex-wrap justify-center md:justify-start">
+      <div className="grid md:grid-cols-3 gap-6">
         {dealsData?.map((deal) => (
           <DealsCard key={deal.id} {...deal} />
         ))}

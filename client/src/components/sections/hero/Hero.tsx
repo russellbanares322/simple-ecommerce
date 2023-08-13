@@ -3,7 +3,7 @@ import CreditCard from "../../../assets/CreditCard";
 
 const Hero: React.FC = () => {
   return (
-    <div className="page-padding-y page-padding-x bg-hero-bg bg-cover bg-center relative overflow-hidden">
+    <div className="p-4 max-w-[1640px] bg-hero-bg bg-cover bg-center relative overflow-hidden">
       <div className="my-14 md:my-28">
         <p className="font-semibold text-soft-green text-[2rem] w-[20rem] md:text-[4rem] md:w-[30rem]">
           Shopping And Department Store.
