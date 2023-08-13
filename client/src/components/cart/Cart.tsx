@@ -15,7 +15,7 @@ const Cart: React.FC<TCartElementProps> = ({ isCartOpen }) => {
     <div
       className={`${
         !isCartOpen && "scale-0"
-      } duration-200 ease-in-out absolute bg-white shadow-md px-2 py-4 right-0 rounded-md`}
+      } duration-200 ease-in-out absolute bg-white shadow-md px-2 py-4 top-12 -right-20 md:right-0 rounded-md`}
     >
       <div className="w-[20rem]">
         {isCartEmpty ? (
