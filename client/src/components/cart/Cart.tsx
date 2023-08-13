@@ -6,6 +6,10 @@ import { TCartElementProps } from "./types";
 const Cart: React.FC<TCartElementProps> = ({ isCartOpen }) => {
   const { cartItems } = useCart();
   const isCartEmpty = cartItems.length === 0;
+  const cartItemsTotal = cartItems.reduce(
+    (prevVal, cartItem) => prevVal + cartItem.inputPrice,
+    0
+  );
 
   return (
     <div
@@ -29,6 +33,14 @@ const Cart: React.FC<TCartElementProps> = ({ isCartOpen }) => {
               title={cartItem.title}
             />
           ))
+        )}
+        {!isCartEmpty && (
+          <p className="text-right">
+            Total:{" "}
+            <span className="font-semibold">
+              ₱{cartItemsTotal.toLocaleString()}
+            </span>
+          </p>
         )}
       </div>
     </div>

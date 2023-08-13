@@ -43,7 +43,7 @@ const CartItems: React.FC<TCartItemProps> = ({
           <p className="text-xs">({rating})</p>
         </div>
         <div>
-          <p className="font-medium">₱{inputPrice}.00</p>
+          <p className="font-medium">₱{inputPrice.toLocaleString()}</p>
         </div>
       </div>
       <div className="flex justify-center items-center gap-5 mt-2">
