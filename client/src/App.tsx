@@ -3,7 +3,7 @@ import Home from "./pages/home/Home";
 
 function App() {
   return (
-    <div className="font-poppins min-h-[100vh] h-full w-full">
+    <div className="font-poppins min-h-[100vh] h-full">
       <Navbar />
       <Home />
     </div>

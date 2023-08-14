@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
     setIsCartOpen(false);
   };
   return (
-    <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-50">
+    <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-50 mx-auto">
       <div className="flex justify-between items-center lg:mr-[5rem]">
         <div className="flex items-center gap-2">
           <img className="w-11 h-11" src={logo} />

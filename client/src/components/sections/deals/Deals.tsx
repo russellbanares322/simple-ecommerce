@@ -21,7 +21,7 @@ const Deals: React.FC = () => {
   }));
 
   return (
-    <div className="section-padding max-w-[1640px]">
+    <div className="section-padding max-w-[1640px] mx-auto">
       <p className="section-title">Todays Best Deals For You</p>
       <div className="grid md:grid-cols-3 gap-6">
         {dealsData?.map((deal) => (
