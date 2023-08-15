@@ -9,11 +9,13 @@ import {
 } from "react-icons/hi";
 import useCart from "../../store/cartStore/useCart";
 import Cart from "../cart/Cart";
+import { useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const { cartItems } = useCart();
+  const navigate = useNavigate();
   const cartItemsCount = cartItems.length;
   const handleOpenNavbar = () => {
     setIsNavOpen(true);
@@ -31,7 +33,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-50 mx-auto">
       <div className="flex justify-between items-center lg:mr-[5rem]">
-        <div className="flex items-center gap-2">
+        <div
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 cursor-pointer"
+        >
           <img className="w-11 h-11" src={logo} />
           <h1 className="font-bold text-2xl">Shopcart</h1>
         </div>
@@ -55,7 +60,12 @@ const Navbar: React.FC = () => {
       >
         <ul className="flex-col lg:flex-row lg:flex lg:items-center gap-9 text-[0.95rem] mr-0 lg:mr-auto font-medium">
           <li className="cursor-pointer my-5 lg:my-0">Category</li>
-          <li className="cursor-pointer my-5 lg:my-0">Deals</li>
+          <li
+            onClick={() => navigate("/deals")}
+            className="cursor-pointer my-5 lg:my-0"
+          >
+            Deals
+          </li>
           <li className="cursor-pointer my-5 lg:my-0">What's New</li>
           <li className="cursor-pointer">Delivery</li>
         </ul>

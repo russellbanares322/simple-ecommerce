@@ -15,6 +15,9 @@
 .section-padding {
   @apply px-10 py-4;
 }
+.page-layout {
+  @apply max-w-[1640px] mx-auto section-padding;
+}
 .img-style {
   @apply object-cover h-[15rem] w-[16rem];
 }
