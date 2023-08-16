@@ -3,6 +3,7 @@ import { TDealsProps } from "./types";
 import { RiStarFill, RiStarHalfFill } from "react-icons/ri";
 import { HiOutlineHeart } from "react-icons/hi";
 import useCart from "../../../store/cartStore/useCart";
+import { motion } from "framer-motion";
 
 const DealsCard: React.FC<TDealsProps> = ({
   id,
@@ -28,7 +29,7 @@ const DealsCard: React.FC<TDealsProps> = ({
   const isProductInCart = cartItems.some((cartItem) => cartItem.id === id);
   const ratingHasRemainder = rating % 2 !== 0;
   return (
-    <div className="max-w-[1640px] py-4">
+    <motion.div layout className="max-w-[1640px] py-4">
       <div className="bg-gray p-2 rounded-md relative">
         <img
           className="object-cover h-[19rem] w-full duration-300 ease-in-out rounded-md"
@@ -61,7 +62,7 @@ const DealsCard: React.FC<TDealsProps> = ({
       >
         {isProductInCart ? "Remove from Cart" : "Add to Cart"}
       </button>
-    </div>
+    </motion.div>
   );
 };
 

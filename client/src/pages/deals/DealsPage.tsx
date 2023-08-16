@@ -4,6 +4,7 @@ import { TDealsProps } from "../../components/sections/deals/types";
 import useProduct from "../../store/productStore/useProduct";
 import DealsFilterButtons from "./DealsFilterButtons";
 import DealsHero from "./DealsHero";
+import { motion } from "framer-motion";
 
 const DealsPage: React.FC = () => {
   const { products, getProducts } = useProduct();
@@ -45,11 +46,11 @@ const DealsPage: React.FC = () => {
         filterOptions={filterOptions}
       />
       <p className="section-title">Deals for you!</p>
-      <div className="grid md:grid-cols-3 gap-6">
+      <motion.div layout className="grid md:grid-cols-3 gap-6">
         {deals?.map((deal) => (
           <DealsCard key={deal.id} {...deal} />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
