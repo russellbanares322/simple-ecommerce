@@ -34,10 +34,10 @@ const DealsFilterButtons: React.FC<TFilterOptionProps<string[]>> = ({
     <div className="py-14 flex items-center gap-3">
       {filterOptions.map((filterOption: string) => (
         <div
-          className={`bg-secondary-gray px-3 py-1 rounded-full cursor-pointer ${
+          className={`px-3 py-1 rounded-full cursor-pointer ${
             checkIfOptionIsAdded(filterOption)
-              ? "border border-black"
-              : "border-none"
+              ? "border border-black bg-soft-green text-white"
+              : "border-none bg-secondary-gray text-black"
           }`}
           key={filterOption}
           onClick={() => handleSelectCategory(filterOption)}
