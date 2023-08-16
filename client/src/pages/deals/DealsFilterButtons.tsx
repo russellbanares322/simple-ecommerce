@@ -9,13 +9,36 @@ const DealsFilterButtons: React.FC<TFilterOptionProps<string[]>> = ({
   const handleSelectCategory = (selectedFilterOption: string) => {
     const isSelectedCategoryAdded =
       selectedFilterOptions.includes(selectedFilterOption);
+    const filteredSelectedOption = selectedFilterOptions.filter(
+      (filterOption) => filterOption !== selectedFilterOption
+    );
+    if (isSelectedCategoryAdded) {
+      setSelectedFilterOptions(filteredSelectedOption);
+    } else {
+      setSelectedFilterOptions([
+        ...selectedFilterOptions,
+        selectedFilterOption,
+      ]);
+    }
+  };
+
+  const checkIfOptionIsAdded = (optionName: string) => {
+    const isOptionAdded = selectedFilterOptions.includes(optionName);
+    if (!isOptionAdded) {
+      return false;
+    }
+    return true;
   };
 
   return (
     <div className="py-14 flex items-center gap-3">
       {filterOptions.map((filterOption: string) => (
         <div
-          className={`bg-secondary-gray px-3 py-1 rounded-full cursor-pointer`}
+          className={`bg-secondary-gray px-3 py-1 rounded-full cursor-pointer ${
+            checkIfOptionIsAdded(filterOption)
+              ? "border border-black"
+              : "border-none"
+          }`}
           key={filterOption}
           onClick={() => handleSelectCategory(filterOption)}
         >
