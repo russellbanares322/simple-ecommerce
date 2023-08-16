@@ -35,10 +35,7 @@ const DealsCard: React.FC<TDealsProps> = ({
           className="object-cover h-[19rem] w-full duration-300 ease-in-out rounded-md"
           src={thumbnail}
         />
-        <HiOutlineHeart
-          onClick={() => addToCart(productsData)}
-          className=" text-[2.3rem] shadow-lg rounded-full bg-white absolute top-5 right-6 p-2"
-        />
+        <HiOutlineHeart className=" text-[2.3rem] shadow-lg rounded-full bg-white absolute top-5 right-6 p-2" />
       </div>
       <div className="flex justify-between items-center my-2">
         <p className="text-lg font-medium">{title}</p>
