@@ -6,7 +6,7 @@ const DealsHero: React.FC = () => {
     <div className="py-7 bg-soft-pink px-[5rem] relative">
       <div className="py-[1rem]">
         <p className="font-semibold text-soft-green text-[2rem] w-96">
-          Grab Upto 50% Off On Selected Headphone
+          Grab Upto 50% Off On Selected Product
         </p>
         <button className="button-filled-style mt-[1.75rem]">Buy Now</button>
       </div>
