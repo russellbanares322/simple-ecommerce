@@ -9,3 +9,6 @@ export type TDealsProps = {
     rating:number,
     thumbnail:string
 }
+export type TDealsSkeletonProps = {
+    loaderLength: number
+}
