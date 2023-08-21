@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import useProduct from "../../../store/productStore/useProduct";
 import DealsCard from "./DealsCard";
+import DealsSkeletonLoader from "./DealsSkeletonLoader";
 import { TDealsProps } from "./types";
 
 const Deals: React.FC = () => {
-  const { getProducts, products } = useProduct();
+  const { getProducts, products, isLoading } = useProduct();
   useEffect(() => {
     getProducts();
   }, [getProducts]);
@@ -25,6 +26,11 @@ const Deals: React.FC = () => {
     <div className="section-padding max-w-[1640px] mx-auto">
       <p className="section-title">Todays Best Deals For You</p>
       <div className="grid md:grid-cols-3 gap-6">
+        {Array.from({ length: dealsData.length })
+          .fill("")
+          .map((_) => (
+            <DealsSkeletonLoader />
+          ))}
         {dealsData?.map((deal) => (
           <DealsCard key={deal.id} {...deal} />
         ))}

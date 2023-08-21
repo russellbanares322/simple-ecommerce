@@ -11,5 +11,6 @@ export type TProductProps = {
 
 export type TProducts = {
     products: TProductProps[],
+    isLoading:boolean,
     getProducts: () => void
 }
