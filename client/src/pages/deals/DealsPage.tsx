@@ -5,9 +5,11 @@ import useProduct from "../../store/productStore/useProduct";
 import DealsFilterButtons from "./DealsFilterButtons";
 import DealsHero from "./DealsHero";
 import { motion } from "framer-motion";
+import DealsSkeletonLoader from "../../components/sections/deals/DealsSkeletonLoader";
 
 const DealsPage: React.FC = () => {
   const { products, getProducts } = useProduct();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedFilterOptions, setSelectedFilterOptions] = useState<string[]>(
     []
   );
@@ -15,6 +17,11 @@ const DealsPage: React.FC = () => {
     getProducts();
   }, [getProducts]);
 
+  useEffect(() => {
+    if (products.length > 0) {
+      setIsLoading(false);
+    }
+  }, [products]);
   const dealsData: TDealsProps[] = products.map((item: any) => ({
     id: item.id,
     inputPrice: item.inputPrice,
@@ -38,7 +45,7 @@ const DealsPage: React.FC = () => {
   ];
 
   return (
-    <div className="page-layout">
+    <div className="page-layout min-h-[100vh]">
       <DealsHero />
       <DealsFilterButtons
         selectedFilterOptions={selectedFilterOptions}
@@ -46,6 +53,7 @@ const DealsPage: React.FC = () => {
         filterOptions={filterOptions}
       />
       <p className="section-title">Deals for you!</p>
+      {isLoading && <DealsSkeletonLoader loaderLength={deals.length} />}
       <motion.div layout className="grid md:grid-cols-3 gap-6">
         {deals?.map((deal) => (
           <DealsCard key={deal.id} {...deal} />

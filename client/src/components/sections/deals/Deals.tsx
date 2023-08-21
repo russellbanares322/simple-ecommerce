@@ -24,9 +24,9 @@ const Deals: React.FC = () => {
   }));
 
   return (
-    <div className="section-padding max-w-[1640px] mx-auto min-h-[100vh]">
+    <div className="page-layout min-h-[100vh]">
       <p className="section-title">Todays Best Deals For You</p>
-      {<DealsSkeletonLoader loaderLength={dealsData.length} />}
+      {isLoading && <DealsSkeletonLoader loaderLength={dealsData.length} />}
       <div className="grid md:grid-cols-3 gap-6">
         {!isLoading &&
           dealsData?.map((deal) => <DealsCard key={deal.id} {...deal} />)}
