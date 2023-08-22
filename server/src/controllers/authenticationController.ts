@@ -1,6 +1,6 @@
 import {Response, Request} from 'express';
-import { authentication, random } from 'helpers';
-import { createUser, getUserByEmail } from './userController';
+import { authentication, random } from '../helpers/index';
+import { createUser, getUserByEmail } from '../db/users';
 
 export const register = async(req: Request, res: Response) => {
     try {
@@ -14,7 +14,7 @@ export const register = async(req: Request, res: Response) => {
         if(existingUser) {
             return res.sendStatus(400)
         }
-        const salt = random();
+        const salt = random(); 
         const user = await createUser({
             email,
             username,
