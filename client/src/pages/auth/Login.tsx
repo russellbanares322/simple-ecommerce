@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="w-96 p-3">
+    <div className="w-96 p-3 pt-20 md:pt-0">
       <p className="text-3xl">Login</p>
       <p className="text-md mt-1">
         Doesn't have an account yet?{" "}
