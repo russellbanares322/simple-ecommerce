@@ -6,6 +6,10 @@
 .button-filled-style {
   @apply bg-soft-green text-white px-5 py-2 lg:px-7 lg:py-3 rounded-full text-sm;
 }
+
+.button-flat-filled-style {
+  @apply bg-soft-green text-white px-5 py-2 lg:px-7 lg:py-3 rounded-md text-sm;
+}
 .button-outlined-style {
   @apply border border-soft-green text-black px-5 py-2 lg:px-7 lg:py-3 rounded-full text-sm hover:bg-soft-green hover:text-white duration-300 ease-in-out;
 }
@@ -20,6 +24,9 @@
 }
 .img-style {
   @apply object-cover h-[15rem] w-[16rem];
+}
+.input-style {
+  @apply border mt-2 h-10 rounded-md px-2 text-sm;
 }
 .section-padding-y {
   @apply py-16;

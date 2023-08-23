@@ -67,9 +67,7 @@ const Navbar: React.FC = () => {
             Deals
           </li>
           <li className="cursor-pointer my-5 lg:my-0">What's New</li>
-          <li  className="cursor-pointer">
-            Parallax
-          </li>
+          <li className="cursor-pointer">Parallax</li>
         </ul>
         <div className="mr-2 lg:mr-auto relative">
           <input
@@ -79,9 +77,13 @@ const Navbar: React.FC = () => {
           <HiOutlineSearch className="absolute top-[0.55rem] right-6 text-xl" />
         </div>
         <div className="flex items-center gap-5">
-          <p className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer">
+          <p
+            onClick={() => navigate("/login")}
+            className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer"
+          >
             <HiOutlineUser className="text-xl" />
-            Account
+            {/* Account */}
+            Login
           </p>
           <div className="relative">
             <p
