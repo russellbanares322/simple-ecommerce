@@ -15,3 +15,8 @@ export type TCart = {
     increaseQuantity: (productId: number) => void
     decreaseQuantity: (productId: number, productQuantity: number) => void
 }
+
+export type TAuthenticationProps = {
+    sessionToken: string | null
+    getSessionToken: (passedToken: string) => void
+}
