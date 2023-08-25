@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
-import useProduct from "../../../store/productStore/useProduct";
+import React from "react";
+import { useQuery } from "react-query";
+import { getAllProducts } from "../../../api/productsApi";
+import { Product } from "../../../api/types";
 import { TCategories } from "./types";
 
 const CategoriesSection: React.FC = () => {
-  const { getProducts, products } = useProduct();
+  const { data: products } = useQuery<Product[], Error>({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
 
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
-
-  const categoriesData: TCategories[] = products.map((item: any) => ({
+  const categoriesData = products?.map((item: any) => ({
     id: item.id,
     category: item.category,
     thumbnail: item.thumbnail,
   }));
-  const randomlySortedCategories = [...categoriesData]
+  const randomlySortedCategories: TCategories[] = [...(categoriesData || [])]
     .sort(() => Math.random() - 0.5)
     .slice(0, 6);
 

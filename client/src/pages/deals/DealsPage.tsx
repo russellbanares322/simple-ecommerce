@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DealsCard from "../../components/sections/deals/DealsCard";
-import { TDealsProps } from "../../components/sections/deals/types";
-import useProduct from "../../store/productStore/useProduct";
 import DealsFilterButtons from "./DealsFilterButtons";
 import DealsHero from "./DealsHero";
 import { motion } from "framer-motion";
 import DealsSkeletonLoader from "../../components/sections/deals/DealsSkeletonLoader";
+import { useQuery } from "react-query";
+import { Product } from "../../api/types";
+import { getAllProducts } from "../../api/productsApi";
+import { TDealsProps } from "../../components/sections/deals/types";
 
 const DealsPage: React.FC = () => {
-  const { products, getProducts } = useProduct();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedFilterOptions, setSelectedFilterOptions] = useState<string[]>(
     []
   );
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+  const { data: products, isLoading } = useQuery<Product[], Error>({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
 
-  useEffect(() => {
-    if (products.length > 0) {
-      setIsLoading(false);
-    }
-  }, [products]);
-  const dealsData: TDealsProps[] = products.map((item: any) => ({
+  const dealsData = products?.map((item: any) => ({
     id: item.id,
     inputPrice: item.inputPrice,
     category: item.category,
@@ -34,7 +30,7 @@ const DealsPage: React.FC = () => {
     thumbnail: item.thumbnail,
   }));
 
-  const filteredProducts = dealsData.filter((product: any) =>
+  const filteredProducts = dealsData?.filter((product: any) =>
     selectedFilterOptions.includes(product.category.toUpperCase())
   );
   const isFilterOptionEmpty = selectedFilterOptions.length === 0;
@@ -45,7 +41,7 @@ const DealsPage: React.FC = () => {
   ];
 
   return (
-    <div className="page-layout min-h-[100vh]">
+    <div className="page-layout min-h-[100vh] h-full">
       <DealsHero />
       <DealsFilterButtons
         selectedFilterOptions={selectedFilterOptions}
@@ -53,11 +49,12 @@ const DealsPage: React.FC = () => {
         filterOptions={filterOptions}
       />
       <p className="section-title">Deals for you!</p>
-      {isLoading && <DealsSkeletonLoader loaderLength={deals.length} />}
+      {isLoading && <DealsSkeletonLoader loaderLength={15} />}
       <motion.div layout className="grid md:grid-cols-3 gap-6">
-        {deals?.map((deal) => (
-          <DealsCard key={deal.id} {...deal} />
-        ))}
+        {!isLoading &&
+          deals?.map((deal: TDealsProps) => (
+            <DealsCard key={deal.id} {...deal} />
+          ))}
       </motion.div>
     </div>
   );

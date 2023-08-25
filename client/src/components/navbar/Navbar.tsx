@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
             Deals
           </li>
           <li className="cursor-pointer my-5 lg:my-0">What's New</li>
-          <li className="cursor-pointer">Parallax</li>
+          <li className="cursor-pointer my-5 lg:my-0">My listing</li>
         </ul>
         <div className="mr-2 lg:mr-auto relative">
           <input

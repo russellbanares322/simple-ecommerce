@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import useProduct from "../../../store/productStore/useProduct";
+import React from "react";
+import { useQuery } from "react-query";
+import { getAllProducts } from "../../../api/productsApi";
+import { Product } from "../../../api/types";
 import DealsCard from "./DealsCard";
 import DealsSkeletonLoader from "./DealsSkeletonLoader";
-import { TDealsProps } from "./types";
 
 const Deals: React.FC = () => {
-  const { getProducts, products, isLoading } = useProduct();
+  const { data: products, isLoading } = useQuery<Product[], Error>({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+  });
 
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
-
-  const dealsData: TDealsProps[] = products.slice(0, 6).map((item: any) => ({
+  const dealsData = products?.slice(0, 6).map((item: any) => ({
     id: item.id,
     inputPrice: item.inputPrice,
     category: item.category,
@@ -26,7 +26,7 @@ const Deals: React.FC = () => {
   return (
     <div className="page-layout min-h-[100vh]">
       <p className="section-title">Todays Best Deals For You</p>
-      {isLoading && <DealsSkeletonLoader loaderLength={dealsData.length} />}
+      {isLoading && <DealsSkeletonLoader loaderLength={6} />}
       <div className="grid md:grid-cols-3 gap-6">
         {!isLoading &&
           dealsData?.map((deal) => <DealsCard key={deal.id} {...deal} />)}
