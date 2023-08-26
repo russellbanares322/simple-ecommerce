@@ -13,3 +13,4 @@ export type Product = {
     quantity: number,
     inputPrice:number
 }
+
