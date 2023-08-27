@@ -10,13 +10,16 @@ import {
 import useCart from "../../store/cartStore/useCart";
 import Cart from "../cart/Cart";
 import { useNavigate } from "react-router-dom";
+import useAuthentication from "../../hooks/useAuthentication";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const { isAuthenticated } = useAuthentication();
   const { cartItems } = useCart();
   const navigate = useNavigate();
   const cartItemsCount = cartItems.length;
+
   const handleOpenNavbar = () => {
     setIsNavOpen(true);
   };
@@ -30,6 +33,7 @@ const Navbar: React.FC = () => {
   const handleCloseCart = () => {
     setIsCartOpen(false);
   };
+
   return (
     <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-50 mx-auto">
       <div className="flex justify-between items-center lg:mr-[5rem]">
@@ -78,12 +82,13 @@ const Navbar: React.FC = () => {
         </div>
         <div className="flex items-center gap-5">
           <p
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              isAuthenticated ? navigate("/my-account") : navigate("/login")
+            }
             className="text-[0.95rem] flex items-center gap-2 font-medium cursor-pointer"
           >
             <HiOutlineUser className="text-xl" />
-            {/* Account */}
-            Login
+            {isAuthenticated ? "Account" : "Login"}
           </p>
           <div className="relative">
             <p

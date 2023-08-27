@@ -55,7 +55,6 @@ export const login = async(req: Request, res: Response) => {
 
         await user.save();
         res.cookie('ECOMMERCE-AUTH', user.authentication.sessionToken, {domain: 'localhost', path:'/'});
-
         return res.status(200).json(user).end()
 
     } catch(error){

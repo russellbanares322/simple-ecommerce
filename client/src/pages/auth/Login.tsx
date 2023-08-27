@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../../api/authenticationApi";
 import inputWarningMessage from "./inputWarningMessage";
@@ -29,8 +30,11 @@ const Login: React.FC = () => {
     e.preventDefault();
     handleValidateInputs();
     signIn(formData.email, formData.password)
-      .then((response) => console.log(response.authentication.sessionToken))
-      .catch((err) => console.log(err));
+      .then(() => {
+        navigate("/");
+        toast.success("Successfully logged in!");
+      })
+      .catch(() => toast.error("Failed to login, please try again."));
   };
 
   return (

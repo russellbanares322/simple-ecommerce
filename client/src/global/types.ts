@@ -1,4 +1,3 @@
-import { ReactNode } from "react"
 
 export type TCircleClipPathProps = {
     topClassName:  string,
@@ -10,5 +9,6 @@ export type TCircleClipPathProps = {
 }
 
 export type TProtectedRoutesProps = {
-    children: ReactNode
+    children: JSX.Element,
+    isAuthenticated: boolean
 }

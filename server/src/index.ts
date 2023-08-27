@@ -21,9 +21,6 @@ const {PORT, MONGO_DB_URL} = process.env;
 app.use(compression())
 app.use(bodyParser.json())
 app.use(cookieParser());
-app.use((req, res, next) => {
-    next()
-})
 
 //Server
 const server = http.createServer(app);
