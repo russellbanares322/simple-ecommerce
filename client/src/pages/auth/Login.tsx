@@ -15,8 +15,8 @@ const Login: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleFormDataChange = (e: React.FormEvent) => {
-    const { name, value } = e.target as HTMLInputElement;
+  const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
