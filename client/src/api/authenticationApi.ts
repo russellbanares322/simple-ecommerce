@@ -12,9 +12,10 @@ export const signIn = async (email: string, password: string) => {
         email: response.data.email,
         username: response.data.username
     }
-    sessionStorage.setItem("session-token", sessionToken);
+    sessionStorage.setItem("session-token", sessionToken);  
     localStorage.setItem("user-info", JSON.stringify(userInfo))
     window.location.reload();
+    window.location.replace("/")
     return response.data
 }
 
