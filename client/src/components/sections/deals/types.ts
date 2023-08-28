@@ -10,5 +10,5 @@ export type TDealsProps = {
     thumbnail:string
 }
 export type TDealsSkeletonProps = {
-    loaderLength: number | undefined
+    loaderLength: number
 }
