@@ -39,6 +39,10 @@ const Login: React.FC = () => {
         navigate("/");
         toast.success("Successfully logged in!");
         setIsLoading(false);
+        setFormData({
+          email: "",
+          password: "",
+        });
       })
       .catch(() => {
         toast.error("Failed to login, please try again.");

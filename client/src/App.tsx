@@ -26,14 +26,16 @@ function App() {
           {!isAuthenticated && (
             <Route path="/sign-up" element={<AuthLayout />} />
           )}
-          <Route
-            path="/my-account"
-            element={
-              <ProtectedRoutes isAuthenticated={isAuthenticated}>
-                <Account />
-              </ProtectedRoutes>
-            }
-          />
+          {isAuthenticated && (
+            <Route
+              path="/my-account"
+              element={
+                <ProtectedRoutes isAuthenticated={isAuthenticated}>
+                  <Account />
+                </ProtectedRoutes>
+              }
+            />
+          )}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

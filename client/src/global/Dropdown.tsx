@@ -10,6 +10,7 @@ const Dropdown: React.FC<TDropdownProps> = ({
   const navigate = useNavigate();
 
   const handleClickAction = (action: string | (() => void) | void) => {
+    handleToggleDropdown();
     if (typeof action === "string") {
       navigate(action);
     } else if (typeof action === "function") {

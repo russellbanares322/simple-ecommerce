@@ -23,6 +23,11 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const cartItemsCount = cartItems.length;
 
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   const dropdownItems = [
     {
       name: "Profile",
@@ -30,7 +35,7 @@ const Navbar: React.FC = () => {
     },
     {
       name: "Logout",
-      action: logout(),
+      action: handleLogout,
     },
   ];
 

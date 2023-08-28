@@ -1,4 +1,6 @@
+import toast from "react-hot-toast";
 import axiosClient from "./axiosClient"
+
 
 export const signIn = async (email: string, password: string) => {
     const response = await axiosClient.post("/auth/login", {
@@ -12,10 +14,13 @@ export const signIn = async (email: string, password: string) => {
     }
     sessionStorage.setItem("session-token", sessionToken);
     localStorage.setItem("user-info", JSON.stringify(userInfo))
+    window.location.reload();
     return response.data
 }
 
 export const logout = () => {
     sessionStorage.removeItem("session-token");
     localStorage.removeItem("user-info");
+    window.location.reload();
+    toast.success("Successfully logged out!")
 }
