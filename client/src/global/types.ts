@@ -10,13 +10,13 @@ export type TCircleClipPathProps = {
 }
 
 export type TProtectedRoutesProps = {
-    children: React.JSX,
+    children: React.ReactNode,
     isAuthenticated: boolean
 }
 
 export type TDropdownItems = {
     name: string,
-    action:string | void 
+    action:string | (() => void) | void
 }
 
 export type TDropdownProps = {

@@ -8,13 +8,15 @@ const Dropdown: React.FC<TDropdownProps> = ({
   items,
 }) => {
   const navigate = useNavigate();
-  const handleClickAction = (action: string | void) => {
+
+  const handleClickAction = (action: string | (() => void) | void) => {
     if (typeof action === "string") {
       navigate(action);
-    } else {
+    } else if (typeof action === "function") {
       action();
     }
   };
+
   return (
     <div>
       <HiOutlineChevronDown

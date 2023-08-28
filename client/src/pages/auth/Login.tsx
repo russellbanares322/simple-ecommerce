@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../../api/authenticationApi";
 import inputWarningMessage from "./inputWarningMessage";
+import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -11,6 +12,9 @@ const Login: React.FC = () => {
     password: "",
   });
   const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
   const handleFormDataChange = (e: React.FormEvent) => {
     const { name, value } = e.target as HTMLInputElement;
     setFormData({ ...formData, [name]: value });
@@ -29,12 +33,21 @@ const Login: React.FC = () => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleValidateInputs();
+    setIsLoading(true);
     signIn(formData.email, formData.password)
       .then(() => {
         navigate("/");
         toast.success("Successfully logged in!");
+        setIsLoading(false);
       })
-      .catch(() => toast.error("Failed to login, please try again."));
+      .catch(() => {
+        toast.error("Failed to login, please try again.");
+        setIsLoading(false);
+      });
+  };
+
+  const handleTogglePasswordDisplay = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -64,16 +77,38 @@ const Login: React.FC = () => {
         <label className="text-sm font-medium mt-4" htmlFor="password">
           Password
         </label>
-        <input
-          onChange={handleFormDataChange}
-          value={formData.password}
-          name="password"
-          className="input-style"
-          type="Password"
-        />
+        <div className="relative">
+          <input
+            onChange={handleFormDataChange}
+            value={formData.password}
+            name="password"
+            className="input-style w-full"
+            type={showPassword ? "text" : "password"}
+          />
+          {formData.password.length > 0 && showPassword && (
+            <HiOutlineEye
+              onClick={handleTogglePasswordDisplay}
+              className="absolute top-4 right-2 cursor-pointer"
+              title="Show Password"
+              size={21}
+            />
+          )}
+          {formData.password.length > 0 && !showPassword && (
+            <HiOutlineEyeOff
+              className="absolute top-4 right-2 cursor-pointer"
+              onClick={handleTogglePasswordDisplay}
+              title="Hide Password"
+              size={21}
+            />
+          )}
+        </div>
         {isFormDirty && !formData.password && inputWarningMessage("Password")}
-        <button type="submit" className="button-flat-filled-style mt-3">
-          LOGIN
+        <button
+          disabled={isLoading}
+          type="submit"
+          className="button-flat-filled-style mt-3"
+        >
+          {isLoading ? "LOGGING IN..." : "LOGIN"}
         </button>
       </form>
     </div>
