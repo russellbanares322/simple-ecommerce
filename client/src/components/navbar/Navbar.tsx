@@ -11,14 +11,28 @@ import useCart from "../../store/cartStore/useCart";
 import Cart from "../cart/Cart";
 import { useNavigate } from "react-router-dom";
 import useAuthentication from "../../hooks/useAuthentication";
+import Dropdown from "../../global/Dropdown";
+import { logout } from "../../api/authenticationApi";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const { isAuthenticated } = useAuthentication();
   const { cartItems } = useCart();
   const navigate = useNavigate();
   const cartItemsCount = cartItems.length;
+
+  const dropdownItems = [
+    {
+      name: "Profile",
+      action: "/my-account",
+    },
+    {
+      name: "Logout",
+      action: logout(),
+    },
+  ];
 
   const handleOpenNavbar = () => {
     setIsNavOpen(true);
@@ -32,6 +46,10 @@ const Navbar: React.FC = () => {
   };
   const handleCloseCart = () => {
     setIsCartOpen(false);
+  };
+
+  const handleToggleDropdown = () => {
+    setShowDropdown(!showDropdown);
   };
 
   return (
@@ -80,7 +98,7 @@ const Navbar: React.FC = () => {
           />
           <HiOutlineSearch className="absolute top-[0.55rem] right-6 text-xl" />
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4">
           <p
             onClick={() =>
               isAuthenticated ? navigate("/my-account") : navigate("/login")
@@ -102,6 +120,15 @@ const Navbar: React.FC = () => {
               Cart
             </p>
             <Cart isCartOpen={isCartOpen} handleCloseCart={handleCloseCart} />
+          </div>
+          <div className="relative">
+            {isAuthenticated && (
+              <Dropdown
+                open={showDropdown}
+                handleToggleDropdown={handleToggleDropdown}
+                items={dropdownItems}
+              />
+            )}
           </div>
         </div>
       </div>

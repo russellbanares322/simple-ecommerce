@@ -1,3 +1,4 @@
+import React from 'react';
 
 export type TCircleClipPathProps = {
     topClassName:  string,
@@ -9,6 +10,17 @@ export type TCircleClipPathProps = {
 }
 
 export type TProtectedRoutesProps = {
-    children: JSX.Element,
+    children: React.JSX,
     isAuthenticated: boolean
+}
+
+export type TDropdownItems = {
+    name: string,
+    action:string | void 
+}
+
+export type TDropdownProps = {
+    items: TDropdownItems[],
+    handleToggleDropdown: () => void,
+    open: boolean
 }
