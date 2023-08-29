@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signIn } from "../../api/authenticationApi";
 import inputWarningMessage from "./inputWarningMessage";
 import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
+import LoadingSpinner from "../../global/LoadingSpinner";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -115,6 +116,7 @@ const Login: React.FC = () => {
           {isLoading ? "LOGGING IN..." : "LOGIN"}
         </button>
       </form>
+      {/* <LoadingSpinner /> */}
     </div>
   );
 };

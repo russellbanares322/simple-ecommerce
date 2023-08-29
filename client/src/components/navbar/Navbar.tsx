@@ -58,13 +58,13 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-50 mx-auto">
+    <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-10 mx-auto">
       <div className="flex justify-between items-center lg:mr-[5rem]">
         <div
           onClick={() => navigate("/")}
           className="flex items-center gap-2 cursor-pointer"
         >
-          <img className="w-11 h-11" src={logo} />
+          <img className="w-11 h-11 object-cover" src={logo} />
           <h1 className="font-bold text-2xl">Shopcart</h1>
         </div>
         {!isNavOpen && (
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
       <div
         className={`${
           isNavOpen ? "translate-y-0" : "translate-y-[-200%]"
-        } pb-7 lg:pb-0 shadow-md lg:shadow-none border-t border-t-soft-green lg:border-none mt-2 pt-5 lg:pt-0 lg:mt-0 bg-white lg:translate-y-0 lg:h-full lg:opacity-100 absolute left-0 z-50 flex w-full flex-col items-center transition-all duration-300 ease-in-out lg:static lg:flex lg:justify-start lg:flex-row lg:items-center gap-7 text-sm`}
+        } pb-7 lg:pb-0 shadow-md lg:shadow-none border-t border-t-soft-green lg:border-none mt-2 pt-5 lg:pt-0 lg:mt-0 bg-white lg:translate-y-0 lg:h-full lg:opacity-100 absolute left-0 z-20 flex w-full flex-col items-center transition-all duration-300 ease-in-out lg:static lg:flex lg:justify-start lg:flex-row lg:items-center gap-7 text-sm`}
       >
         <ul className="flex-col lg:flex-row lg:flex lg:items-center gap-9 text-[0.95rem] mr-0 lg:mr-auto font-medium">
           <li className="cursor-pointer my-5 lg:my-0">Category</li>
