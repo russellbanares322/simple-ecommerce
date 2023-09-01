@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import axiosClient from "./axiosClient"
 
 
-export const signIn = async (email: string, password: string) => {
+export const login = async (email: string, password: string) => {
     const response = await axiosClient.post("/auth/login", {
         email: email,
         password: password
@@ -14,8 +14,15 @@ export const signIn = async (email: string, password: string) => {
     }
     sessionStorage.setItem("session-token", sessionToken);  
     localStorage.setItem("user-info", JSON.stringify(userInfo))
-    window.location.reload();
-    window.location.replace("/")
+    return response.data
+}
+
+export const register = async (username: string, email: string, password: string) => {
+    const response = await axiosClient.post("/auth/register", {
+        username: username,
+        email: email,
+        password: password
+    })
     return response.data
 }
 

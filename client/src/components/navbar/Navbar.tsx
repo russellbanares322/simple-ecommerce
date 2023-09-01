@@ -98,7 +98,9 @@ const Navbar: React.FC = () => {
         </ul>
         <div className="mr-2 lg:mr-auto relative">
           <input
-            className="rounded-full px-4 py-2 text-sm w-80 outline-none border border-neutral-400"
+            className={` ${
+              isAuthenticated ? "w-64" : "w-80"
+            } rounded-full px-4 py-2 text-sm outline-none border border-neutral-400`}
             placeholder="Search product"
           />
           <HiOutlineSearch className="absolute top-[0.55rem] right-6 text-xl" />

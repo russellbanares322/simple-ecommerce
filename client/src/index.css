@@ -26,7 +26,7 @@
   @apply object-cover h-[15rem] w-[16rem];
 }
 .input-style {
-  @apply border mt-2 h-10 rounded-md px-2 text-sm;
+  @apply border mt-2 h-9 rounded-md px-2 text-sm;
 }
 .section-padding-y {
   @apply py-16;

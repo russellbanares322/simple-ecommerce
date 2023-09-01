@@ -29,7 +29,7 @@ const AuthLayout: React.FC = () => {
           widthClassName="w-[10rem]"
         />
       </div>
-      <div className="bg-gradient-to-l from-slate-300 to-cyan md:from-transparent md:to-transparent w-full md:bg-white md:w-1/2 flex items-center md:mt-24 p-3 flex-col">
+      <div className="bg-gradient-to-l from-slate-300 to-cyan md:from-transparent md:to-transparent w-full md:bg-white md:w-1/2 flex items-center md:mt-16 p-3 flex-col">
         {isRouteForLogin && <Login />}
         {isRouteForSignup && <Signup />}
       </div>

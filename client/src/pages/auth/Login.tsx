@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { signIn } from "../../api/authenticationApi";
+import { login } from "../../api/authenticationApi";
 import inputWarningMessage from "./inputWarningMessage";
 import { HiOutlineEyeOff, HiOutlineEye } from "react-icons/hi";
-import LoadingSpinner from "../../global/LoadingSpinner";
+import { TLoginFormDataTypes } from "./types";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<TLoginFormDataTypes>({
     email: "",
     password: "",
   });
   const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const isFormInputsEmpty = !formData.email || !formData.password;
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,7 +27,7 @@ const Login: React.FC = () => {
   };
 
   const handleValidateInputs = () => {
-    if (!formData.email || !formData.password) {
+    if (isFormInputsEmpty) {
       return setIsFormDirty(true);
     }
   };
@@ -35,20 +36,23 @@ const Login: React.FC = () => {
     e.preventDefault();
     handleValidateInputs();
     setIsLoading(true);
-    signIn(formData.email, formData.password)
-      .then(() => {
-        navigate("/");
-        toast.success("Successfully logged in!");
-        setIsLoading(false);
-        setFormData({
-          email: "",
-          password: "",
+    if (!isFormInputsEmpty) {
+      login(formData.email, formData.password)
+        .then(() => {
+          window.location.reload();
+          window.location.replace("/");
+          toast.success("Successfully logged in!");
+          setIsLoading(false);
+          setFormData({
+            email: "",
+            password: "",
+          });
+        })
+        .catch(() => {
+          toast.error("Failed to login, please try again.");
+          setIsLoading(false);
         });
-      })
-      .catch(() => {
-        toast.error("Failed to login, please try again.");
-        setIsLoading(false);
-      });
+    }
   };
 
   const handleTogglePasswordDisplay = () => {
@@ -79,7 +83,7 @@ const Login: React.FC = () => {
           type="text"
         />
         {isFormDirty && !formData.email && inputWarningMessage("Email Address")}
-        <label className="text-sm font-medium mt-4" htmlFor="password">
+        <label className="text-sm font-medium" htmlFor="password">
           Password
         </label>
         <div className="relative">
@@ -116,7 +120,6 @@ const Login: React.FC = () => {
           {isLoading ? "LOGGING IN..." : "LOGIN"}
         </button>
       </form>
-      {/* <LoadingSpinner /> */}
     </div>
   );
 };
