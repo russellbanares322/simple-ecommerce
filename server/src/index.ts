@@ -7,15 +7,16 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import router from '../src/router/index';
+const {PORT, MONGO_DB_URL} = process.env;
 
 const app = express();
 dotenv.config()
 
 app.use(cors({
-    credentials: true
+    credentials: true,
+    origin: [`http://localhost:5173/${PORT}`]
 }))
 
-const {PORT, MONGO_DB_URL} = process.env;
 
 //Middleware
 app.use(compression())
