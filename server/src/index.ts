@@ -14,7 +14,7 @@ dotenv.config()
 
 app.use(cors({
     credentials: true,
-    origin: [`http://localhost:${PORT}`]
+    origin: [`http://localhost:${PORT}`, "https://z-commerce.vercel.app"]
 }))
 
 
