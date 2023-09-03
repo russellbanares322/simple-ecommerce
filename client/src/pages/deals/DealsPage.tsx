@@ -11,12 +11,12 @@ import { TDealsProps } from "../../components/sections/deals/types";
 import DealsRangeFilter from "./DealsRangeFilter";
 
 const DealsPage: React.FC = () => {
-  const [selectedFilterOptions, setSelectedFilterOptions] = useState<string[]>(
-    []
-  );
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedPrices, setSelectedPrices] = useState<number[]>([]);
   const { data: products, isLoading } = useQuery<Product[], Error>({
     queryKey: ["products"],
     queryFn: getAllProducts,
+    refetchOnWindowFocus: false,
   });
 
   const dealsData = products?.map((item: any) => ({
@@ -32,25 +32,27 @@ const DealsPage: React.FC = () => {
   }));
 
   const filteredProducts = dealsData?.filter((product: any) =>
-    selectedFilterOptions.includes(product.category.toUpperCase())
+    selectedCategories.includes(product.category.toUpperCase())
   );
-  const isFilterOptionEmpty = selectedFilterOptions.length === 0;
+  const isFilterOptionEmpty = selectedCategories.length === 0;
   const deals = isFilterOptionEmpty ? dealsData : filteredProducts;
 
   const filterOptions = [
     ...new Set(products?.map((product: any) => product.category.toUpperCase())),
   ];
-  const productPrices = dealsData?.map((product) => product.price);
 
   return (
     <div className="page-layout min-h-[100vh] h-full">
       <DealsHero />
       <DealsFilterButtons
-        selectedFilterOptions={selectedFilterOptions}
-        setSelectedFilterOptions={setSelectedFilterOptions}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
         filterOptions={filterOptions}
       />
-      <DealsRangeFilter productPrices={productPrices} />
+      <DealsRangeFilter
+        setSelectedPrices={setSelectedPrices}
+        selectedPrices={selectedPrices}
+      />
       <p className="section-title">Deals for you!</p>
       {isLoading && <DealsSkeletonLoader loaderLength={15} />}
       <motion.div layout className="grid md:grid-cols-3 gap-6">

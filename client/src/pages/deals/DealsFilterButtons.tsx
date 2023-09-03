@@ -3,27 +3,24 @@ import { TFilterOptionProps } from "./type";
 
 const DealsFilterButtons: React.FC<TFilterOptionProps<string[]>> = ({
   filterOptions,
-  selectedFilterOptions,
-  setSelectedFilterOptions,
+  selectedCategories,
+  setSelectedCategories,
 }) => {
   const handleSelectCategory = (selectedFilterOption: string) => {
     const isSelectedCategoryAdded =
-      selectedFilterOptions.includes(selectedFilterOption);
-    const filteredSelectedOption = selectedFilterOptions.filter(
+      selectedCategories.includes(selectedFilterOption);
+    const filteredSelectedOption = selectedCategories.filter(
       (filterOption) => filterOption !== selectedFilterOption
     );
     if (isSelectedCategoryAdded) {
-      setSelectedFilterOptions(filteredSelectedOption);
+      setSelectedCategories(filteredSelectedOption);
     } else {
-      setSelectedFilterOptions([
-        ...selectedFilterOptions,
-        selectedFilterOption,
-      ]);
+      setSelectedCategories([...selectedCategories, selectedFilterOption]);
     }
   };
 
   const checkIfOptionIsAdded = (optionName: string) => {
-    const isOptionAdded = selectedFilterOptions.includes(optionName);
+    const isOptionAdded = selectedCategories.includes(optionName);
     if (!isOptionAdded) {
       return false;
     }
@@ -31,20 +28,23 @@ const DealsFilterButtons: React.FC<TFilterOptionProps<string[]>> = ({
   };
 
   return (
-    <div className="pt-14 pb-5 flex items-center gap-3">
-      {filterOptions.map((filterOption: string) => (
-        <div
-          className={`px-3 py-1 rounded-full cursor-pointer ${
-            checkIfOptionIsAdded(filterOption)
-              ? "border border-black bg-soft-green text-white"
-              : "border-none bg-secondary-gray text-black"
-          }`}
-          key={filterOption}
-          onClick={() => handleSelectCategory(filterOption)}
-        >
-          <p className="font-medium text-sm">{filterOption}</p>
-        </div>
-      ))}
+    <div className="pt-14 pb-5">
+      <h1 className="pb-2 text-sm font-bold">Filter by category</h1>
+      <div className="flex items-center gap-3">
+        {filterOptions.map((filterOption: string) => (
+          <div
+            className={`px-3 py-1 rounded-full cursor-pointer ${
+              checkIfOptionIsAdded(filterOption)
+                ? "border border-black bg-soft-green text-white"
+                : "border-none bg-secondary-gray text-black"
+            }`}
+            key={filterOption}
+            onClick={() => handleSelectCategory(filterOption)}
+          >
+            <p className="font-medium text-sm">{filterOption}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
