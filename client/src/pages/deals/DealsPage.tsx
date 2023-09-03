@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import { Product } from "../../api/types";
 import { getAllProducts } from "../../api/productsApi";
 import { TDealsProps } from "../../components/sections/deals/types";
+import DealsRangeFilter from "./DealsRangeFilter";
 
 const DealsPage: React.FC = () => {
   const [selectedFilterOptions, setSelectedFilterOptions] = useState<string[]>(
@@ -39,6 +40,7 @@ const DealsPage: React.FC = () => {
   const filterOptions = [
     ...new Set(products?.map((product: any) => product.category.toUpperCase())),
   ];
+  const productPrices = dealsData?.map((product) => product.price);
 
   return (
     <div className="page-layout min-h-[100vh] h-full">
@@ -48,6 +50,7 @@ const DealsPage: React.FC = () => {
         setSelectedFilterOptions={setSelectedFilterOptions}
         filterOptions={filterOptions}
       />
+      <DealsRangeFilter productPrices={productPrices} />
       <p className="section-title">Deals for you!</p>
       {isLoading && <DealsSkeletonLoader loaderLength={15} />}
       <motion.div layout className="grid md:grid-cols-3 gap-6">

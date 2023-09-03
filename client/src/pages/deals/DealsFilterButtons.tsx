@@ -31,7 +31,7 @@ const DealsFilterButtons: React.FC<TFilterOptionProps<string[]>> = ({
   };
 
   return (
-    <div className="py-14 flex items-center gap-3">
+    <div className="pt-14 pb-5 flex items-center gap-3">
       {filterOptions.map((filterOption: string) => (
         <div
           className={`px-3 py-1 rounded-full cursor-pointer ${
