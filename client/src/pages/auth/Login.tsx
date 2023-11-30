@@ -115,7 +115,7 @@ const Login: React.FC = () => {
         <button
           disabled={isLoading}
           type="submit"
-          className="button-flat-filled-style mt-3"
+          className="button-flat-filled-style mt-3 disabled:bg-soft-green/60"
         >
           {isLoading ? "LOGGING IN..." : "LOGIN"}
         </button>

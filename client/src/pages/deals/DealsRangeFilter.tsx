@@ -41,7 +41,6 @@ const DealsRangeFilter: React.FC<TRangeFilterProps> = ({
 
   return (
     <div className="pb-5">
-      {JSON.stringify(selectedPrices)}
       <h1 className="pb-2 text-sm font-bold">Filter by price</h1>
       <input
         style={{ width: `${productPrices.length * 39}px` }}
