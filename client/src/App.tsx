@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import ErrorPage from "./global/ErrorPage";
-import ProtectedRoutes from "./global/ProtectedRoutes";
+import ProtectedRoute from "./global/ProtectedRoute";
 import useAuthentication from "./hooks/useAuthentication";
 import Account from "./pages/account/Account";
 import AuthLayout from "./pages/auth/AuthLayout";
@@ -30,9 +30,9 @@ function App() {
             <Route
               path="/my-account"
               element={
-                <ProtectedRoutes isAuthenticated={isAuthenticated}>
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Account />
-                </ProtectedRoutes>
+                </ProtectedRoute>
               }
             />
           )}

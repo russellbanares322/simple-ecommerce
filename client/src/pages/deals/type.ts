@@ -7,6 +7,18 @@ export type TFilterOptionProps<T> = {
 }
 
 export type TRangeFilterProps= {
-    selectedPrices: number[]
-    setSelectedPrices: React.Dispatch<React.SetStateAction<(number)[]>>
+    selectedPrice: number
+    setSelectedPrice: React.Dispatch<React.SetStateAction<(number)>>
+}
+
+export type TFormattedProductsData = {
+    id: number,
+    inputPrice: number,
+    category: string,
+    quantity: number,
+    title: string,
+    description: string,
+    price: number,
+    rating: number,
+    thumbnail: string,
 }

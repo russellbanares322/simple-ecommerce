@@ -9,8 +9,8 @@ export type TCircleClipPathProps = {
 
 }
 
-export type TProtectedRoutesProps = {
-    children: React.ReactNode | React.ReactElement,
+export type TProtectedRouteProps = {
+    children: React.ReactElement,
     isAuthenticated: boolean
 }
 

@@ -1,14 +1,14 @@
 import { Navigate } from "react-router-dom";
-import { TProtectedRoutesProps } from "./types";
+import { TProtectedRouteProps } from "./types";
 
-const ProtectedRoutes = ({
+const ProtectedRoute = ({
   children,
   isAuthenticated,
-}: TProtectedRoutesProps) => {
+}: TProtectedRouteProps) => {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
   return children;
 };
 
-export default ProtectedRoutes;
+export default ProtectedRoute;
