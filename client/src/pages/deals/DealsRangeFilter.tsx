@@ -6,6 +6,7 @@ import { TRangeFilterProps } from "./type";
 
 const DealsRangeFilter: React.FC<TRangeFilterProps> = ({
   selectedPrice,
+  setIsUserSelectingPrice,
   setSelectedPrice,
 }) => {
   const { data: products } = useQuery<Product[], Error>({
@@ -25,7 +26,13 @@ const DealsRangeFilter: React.FC<TRangeFilterProps> = ({
 
   const handleChangeRangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+    setIsUserSelectingPrice(true);
     setSelectedPrice(parseInt(value));
+    const loadingTimeout = setTimeout(() => {
+      setIsUserSelectingPrice(false);
+    }, 1000);
+
+    return () => clearTimeout(loadingTimeout);
   };
 
   return (

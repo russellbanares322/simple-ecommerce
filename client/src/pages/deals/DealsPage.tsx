@@ -14,6 +14,8 @@ import { TFormattedProductsData } from "./type";
 const DealsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<number>(0);
+  const [isUserSelectingPrice, setIsUserSelectingPrice] =
+    useState<boolean>(false);
   const { data: products, isLoading } = useQuery<Product[], Error>({
     queryKey: ["products"],
     queryFn: getAllProducts,
@@ -56,7 +58,7 @@ const DealsPage: React.FC = () => {
   }, [selectedCategories, selectedPrice]);
 
   return (
-    <div className="page-layout min-h-[100vh] h-full">
+    <div className="page-layout min-h-screen h-full">
       <DealsHero />
       <DealsFilterButtons
         selectedCategories={selectedCategories}
@@ -65,11 +67,13 @@ const DealsPage: React.FC = () => {
       />
       <DealsRangeFilter
         setSelectedPrice={setSelectedPrice}
+        setIsUserSelectingPrice={setIsUserSelectingPrice}
         selectedPrice={selectedPrice}
       />
       <p className="section-title">Deals for you!</p>
-      {isLoading && <DealsSkeletonLoader loaderLength={15} />}
-      <motion.div layout className="grid md:grid-cols-3 gap-6">
+      {isLoading ||
+        (isUserSelectingPrice && <DealsSkeletonLoader loaderLength={15} />)}
+      <motion.div layout className="h-full grid md:grid-cols-3 gap-6">
         {!isLoading &&
           dealsData?.map((deal: TDealsProps) => (
             <DealsCard key={deal.id} {...deal} />

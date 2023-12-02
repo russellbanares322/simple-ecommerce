@@ -8,6 +8,7 @@ export type TFilterOptionProps<T> = {
 
 export type TRangeFilterProps= {
     selectedPrice: number
+    setIsUserSelectingPrice: React.Dispatch<React.SetStateAction<(boolean)>>
     setSelectedPrice: React.Dispatch<React.SetStateAction<(number)>>
 }
 
