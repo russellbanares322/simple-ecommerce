@@ -1,15 +1,14 @@
 import React from 'react';
 
-export type TFilterOptionProps<T> = {
-    filterOptions: string[]
-    selectedCategories: T
-    setSelectedCategories: React.Dispatch<React.SetStateAction<T>>
+export type TFilterOptionProps = {
+    productCategories: string[]
+    selectCategory: (arg:string) => void,
+    checkIfSelectedCategoryIsAdded: (arg: string) => boolean
 }
 
 export type TRangeFilterProps= {
+    selectPrice:(e: React.ChangeEvent<HTMLInputElement>) => void
     selectedPrice: number
-    setIsUserSelectingPrice: React.Dispatch<React.SetStateAction<(boolean)>>
-    setSelectedPrice: React.Dispatch<React.SetStateAction<(number)>>
 }
 
 export type TFormattedProductsData = {
@@ -22,4 +21,9 @@ export type TFormattedProductsData = {
     price: number,
     rating: number,
     thumbnail: string,
+}
+
+export type TFilterOptions = {
+    selectedPrice: number,
+    selectedCategories: string[]
 }
