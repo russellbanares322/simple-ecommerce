@@ -9,8 +9,8 @@ import { TLoginFormDataTypes } from "./types";
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<TLoginFormDataTypes>({
-    email: "",
-    password: "",
+    email: "testaccount21@gmail.com",
+    password: "testaccount21",
   });
   const [isFormDirty, setIsFormDirty] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
