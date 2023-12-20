@@ -4,6 +4,7 @@ import { RiStarFill, RiStarHalfFill } from "react-icons/ri";
 import { HiOutlineHeart } from "react-icons/hi";
 import useCart from "../../../store/cartStore/useCart";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const DealsCard: React.FC<TDealsProps> = ({
   id,
@@ -26,13 +27,16 @@ const DealsCard: React.FC<TDealsProps> = ({
     rating,
     thumbnail,
   };
+  const navigate = useNavigate();
   const isProductInCart = cartItems.some((cartItem) => cartItem.id === id);
   const ratingHasRemainder = rating % 2 !== 0;
+
   return (
     <motion.div layout className="max-w-[1640px] py-4">
       <div className="bg-gray p-2 rounded-md relative">
         <img
-          className="object-cover h-[19rem] w-full duration-300 ease-in-out rounded-md"
+          onClick={() => navigate(`/deals/${id}`)}
+          className="object-cover h-[19rem] w-full duration-300 ease-in-out rounded-md cursor-pointer"
           src={thumbnail}
         />
         <HiOutlineHeart className=" text-[2.3rem] shadow-lg rounded-full bg-white absolute top-5 right-6 p-2" />

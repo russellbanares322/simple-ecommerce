@@ -1,4 +1,4 @@
-export type Product = {
+export type TProducts = {
     id: number,
     title: string,
     description: string,
@@ -10,7 +10,7 @@ export type Product = {
     category: string,
     thumbnail: string,
     images: string[]
-    quantity: number,
+    quantity?: number,
     inputPrice:number
 }
 

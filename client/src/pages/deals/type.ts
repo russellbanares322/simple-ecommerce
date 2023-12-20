@@ -11,6 +11,8 @@ export type TRangeFilterProps= {
     selectedPrice: number
 }
 
+export type DealsSidebarProps = TFilterOptionProps & TRangeFilterProps
+
 export type TFormattedProductsData = {
     id: number,
     inputPrice: number,

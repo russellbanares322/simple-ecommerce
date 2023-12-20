@@ -1,12 +1,12 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getAllProducts } from "../../../api/productsApi";
-import { Product } from "../../../api/types";
+import { TProducts } from "../../../api/types";
 import DealsCard from "./DealsCard";
 import DealsSkeletonLoader from "./DealsSkeletonLoader";
 
 const Deals: React.FC = () => {
-  const { data: products, isLoading } = useQuery<Product[], Error>({
+  const { data: products, isLoading } = useQuery<TProducts[], Error>({
     queryKey: ["products"],
     queryFn: getAllProducts,
   });

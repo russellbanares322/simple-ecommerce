@@ -14,10 +14,18 @@ import useAuthentication from "../../hooks/useAuthentication";
 import Dropdown from "../../global/Dropdown";
 import { logout } from "../../api/authenticationApi";
 
+type ActiveNavLinksLiteral =
+  | "Category"
+  | "Deals"
+  | "What's New"
+  | "My Listing"
+  | "";
+
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [activeNavLink, setActiveNavLink] = useState<ActiveNavLinksLiteral>("");
   const { isAuthenticated } = useAuthentication();
   const { cartItems } = useCart();
   const navigate = useNavigate();
@@ -57,11 +65,23 @@ const Navbar: React.FC = () => {
     setShowDropdown(!showDropdown);
   };
 
+  const handleNavigate = (path: string, navLink: ActiveNavLinksLiteral) => {
+    navigate(path);
+    setActiveNavLink(navLink);
+  };
+
+  const isNavLinkActive = (navLink: ActiveNavLinksLiteral) => {
+    if (activeNavLink === navLink) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <nav className="lg:flex lg:items-center max-w-[1640px] section-padding z-10 mx-auto">
       <div className="flex justify-between items-center lg:mr-[5rem]">
         <div
-          onClick={() => navigate("/")}
+          onClick={() => handleNavigate("/", "")}
           className="flex items-center gap-2 cursor-pointer"
         >
           <img className="w-11 h-11 object-cover" src={logo} />
@@ -88,13 +108,27 @@ const Navbar: React.FC = () => {
         <ul className="flex-col lg:flex-row lg:flex lg:items-center gap-9 text-[0.95rem] mr-0 lg:mr-auto font-medium">
           <li className="cursor-pointer my-5 lg:my-0">Category</li>
           <li
-            onClick={() => navigate("/deals")}
-            className="cursor-pointer my-5 lg:my-0"
+            onClick={() => handleNavigate("/deals", "Deals")}
+            className={`cursor-pointer my-5 lg:my-0 ${
+              isNavLinkActive("Deals") ? "text-green" : "text-black"
+            }`}
           >
             Deals
           </li>
-          <li className="cursor-pointer my-5 lg:my-0">What's New</li>
-          <li className="cursor-pointer my-5 lg:my-0">My listing</li>
+          <li
+            className={`cursor-pointer my-5 lg:my-0 ${
+              isNavLinkActive("What's New") ? "text-green" : "text-black"
+            }`}
+          >
+            What's New
+          </li>
+          <li
+            className={`cursor-pointer my-5 lg:my-0 ${
+              isNavLinkActive("My Listing") ? "text-green" : "text-black"
+            }`}
+          >
+            My Listing
+          </li>
         </ul>
         <div className="mr-2 lg:mr-auto relative">
           <input

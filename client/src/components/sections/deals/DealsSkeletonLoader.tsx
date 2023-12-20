@@ -14,24 +14,24 @@ const DealsSkeletonLoader: React.FC<TDealsSkeletonProps> = ({
             <Skeleton
               className="rounded-md h-[2rem]"
               borderRadius={10}
-              width={200}
+              width={190}
             />
             <Skeleton
               className="rounded-md h-[2rem]"
               borderRadius={10}
-              width={100}
+              width={90}
             />
           </div>
           <Skeleton className="rounded-md h-[1rem] mt-2" borderRadius={10} />
           <Skeleton
             className="rounded-md h-[1.5rem] mt-2"
             borderRadius={10}
-            width={200}
+            width={190}
           />
           <Skeleton
             className="rounded-md h-[2.8rem] mt-2"
             borderRadius={20}
-            width={150}
+            width={140}
           />
         </div>
       ))}

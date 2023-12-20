@@ -8,8 +8,8 @@ const DealsFilterButtons: React.FC<TFilterOptionProps> = ({
 }) => {
   return (
     <div className="pt-14 pb-5">
-      <h1 className="pb-2 text-sm font-bold">Filter by category</h1>
-      <div className="flex items-center gap-3">
+      <h1 className="pb-3 text-sm font-bold">Filter by category</h1>
+      <div className="flex flex-wrap items-center gap-3">
         {productCategories.map((filterOption: string) => (
           <div
             className={`px-3 py-1 rounded-full cursor-pointer ${

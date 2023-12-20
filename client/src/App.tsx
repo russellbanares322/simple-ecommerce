@@ -10,6 +10,7 @@ import Account from "./pages/account/Account";
 import AuthLayout from "./pages/auth/AuthLayout";
 import DealsPage from "./pages/deals/DealsPage";
 import Home from "./pages/home/Home";
+import ProductDetails from "./pages/product/ProductDetails";
 
 function App() {
   const queryClient = new QueryClient();
@@ -21,7 +22,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* TODO: Make the product details a child of DealsPage and render it using Outlet  */}
           <Route path="/deals" element={<DealsPage />} />
+          <Route path="/deals/:productId" element={<ProductDetails />} />
           {!isAuthenticated && <Route path="/login" element={<AuthLayout />} />}
           {!isAuthenticated && (
             <Route path="/sign-up" element={<AuthLayout />} />

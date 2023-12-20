@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import DealsCard from "../../components/sections/deals/DealsCard";
-import DealsFilterButtons from "./DealsFilterButtons";
 import DealsHero from "./DealsHero";
 import { motion } from "framer-motion";
 import DealsSkeletonLoader from "../../components/sections/deals/DealsSkeletonLoader";
 import { useQuery } from "react-query";
-import { Product } from "../../api/types";
+import { TProducts } from "../../api/types";
 import { getAllProducts } from "../../api/productsApi";
 import { TDealsProps } from "../../components/sections/deals/types";
-import DealsRangeFilter from "./DealsRangeFilter";
 import { TFilterOptions, TFormattedProductsData } from "./type";
+import DealsSidebar from "./DealsSidebar";
 
 const DealsPage: React.FC = () => {
   const [filterOptions, setFilterOptions] = useState<TFilterOptions>({
@@ -18,7 +17,7 @@ const DealsPage: React.FC = () => {
   });
   const [isUserSelectingPrice, setIsUserSelectingPrice] =
     useState<boolean>(false);
-  const { data: products, isLoading } = useQuery<Product[], Error>({
+  const { data: products, isLoading } = useQuery<TProducts[], Error>({
     queryKey: ["products"],
     queryFn: getAllProducts,
     refetchOnWindowFocus: false,
@@ -116,24 +115,28 @@ const DealsPage: React.FC = () => {
   return (
     <div className="page-layout min-h-screen h-full">
       <DealsHero />
-      <DealsFilterButtons
-        selectCategory={selectCategory}
-        productCategories={productCategories}
-        checkIfSelectedCategoryIsAdded={checkIfSelectedCategoryIsAdded}
-      />
-      <DealsRangeFilter
-        selectPrice={selectPrice}
-        selectedPrice={filterOptions.selectedPrice}
-      />
-      <p className="section-title">Deals for you!</p>
-      {isLoading ||
-        (isUserSelectingPrice && <DealsSkeletonLoader loaderLength={15} />)}
-      <motion.div layout className="h-full grid md:grid-cols-3 gap-6">
-        {!isLoading &&
-          dealsData?.map((deal: TDealsProps) => (
-            <DealsCard key={deal.id} {...deal} />
-          ))}
-      </motion.div>
+      <p className="section-title my-7">Deals for you!</p>
+      <div className="flex items-start justify-start gap-2">
+        <div className="h-full">
+          <DealsSidebar
+            selectCategory={selectCategory}
+            productCategories={productCategories}
+            checkIfSelectedCategoryIsAdded={checkIfSelectedCategoryIsAdded}
+            selectPrice={selectPrice}
+            selectedPrice={filterOptions.selectedPrice}
+          />
+        </div>
+        <div>
+          {isLoading ||
+            (isUserSelectingPrice && <DealsSkeletonLoader loaderLength={15} />)}
+          <motion.div layout className="h-full grid md:grid-cols-3 gap-6">
+            {!isLoading &&
+              dealsData?.map((deal: TDealsProps) => (
+                <DealsCard key={deal.id} {...deal} />
+              ))}
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 };

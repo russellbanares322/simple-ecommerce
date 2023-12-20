@@ -1,9 +1,9 @@
 import toast from "react-hot-toast";
-import axiosClient from "./axiosClient"
+import authApi from "./authApi"
 
 
 export const login = async (email: string, password: string) => {
-    const response = await axiosClient.post("/auth/login", {
+    const response = await authApi.post("/auth/login", {
         email: email,
         password: password
     })
@@ -18,7 +18,7 @@ export const login = async (email: string, password: string) => {
 }
 
 export const register = async (username: string, email: string, password: string) => {
-    const response = await axiosClient.post("/auth/register", {
+    const response = await authApi.post("/auth/register", {
         username: username,
         email: email,
         password: password
