@@ -15,7 +15,7 @@ const ProductImages = ({
         <img
           onClick={() => handleSelectImageIndex(index)}
           className={`h-16 w-16 object-cover rounded-md shadow-sm cursor-pointer ${
-            isImageSelected(index) ? "border-2 border-black" : ""
+            isImageSelected(index) ? "border border-black" : "border-none"
           }`}
           key={index}
           src={image}
