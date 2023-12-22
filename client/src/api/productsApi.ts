@@ -12,6 +12,5 @@ export const getAllProducts = async (): Promise<TProducts[]> => {
 export const getProduct = async (id: string | undefined): Promise<TProducts> => {
     const response = await axios.get(`${VITE_APP_PRODUCTS_API_BASE_URL}/products/${id}`);
     const data: TProducts = response.data
-        console.log(response)
     return data
 }
