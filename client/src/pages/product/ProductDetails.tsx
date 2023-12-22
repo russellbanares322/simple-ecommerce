@@ -39,11 +39,11 @@ const ProductDetails = () => {
           />
         </div>
         {/* Center */}
-        <div className="w-full border border-green p-1">
+        <div className="w-full p-1">
           <ProductImageViewer currentlyViewedImage={currentlyViewedImage} />
         </div>
         {/* Right */}
-        <div className="w-full border border-red-600 p-1">
+        <div className="w-full p-1">
           <ProductDescriptions />
         </div>
       </div>
