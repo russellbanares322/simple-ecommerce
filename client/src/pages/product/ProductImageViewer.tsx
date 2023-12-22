@@ -5,7 +5,13 @@ type ProductImageViewerProps = {
 const ProductImageViewer = ({
   currentlyViewedImage,
 }: ProductImageViewerProps) => {
-  return <div>{JSON.stringify(currentlyViewedImage)}</div>;
+  return (
+    <img
+      className="object-cover rounded-md h-[27rem] w-80 mx-auto"
+      src={currentlyViewedImage}
+      alt={currentlyViewedImage}
+    />
+  );
 };
 
 export default ProductImageViewer;

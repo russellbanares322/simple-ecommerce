@@ -13,6 +13,14 @@ const ProductDetails = () => {
     queryFn: () => getProduct(productId),
   });
 
+  const productDescriptionsData = {
+    title: data?.title,
+    rating: data?.rating,
+    price: data?.price,
+    description: data?.description,
+    quantity: 1,
+  };
+
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const currentlyViewedImage = data?.images[selectedImageIndex];
 
@@ -28,7 +36,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="page-layout min-h-screen h-full mt-10">
+    <div className="page-layout min-h-screen h-full mt-16">
       <div className="flex h-full gap-3">
         {/* Left */}
         <div className="w-96 p-1">
@@ -44,7 +52,9 @@ const ProductDetails = () => {
         </div>
         {/* Right */}
         <div className="w-full p-1">
-          <ProductDescriptions />
+          <ProductDescriptions
+            productDescriptionsData={productDescriptionsData}
+          />
         </div>
       </div>
     </div>
