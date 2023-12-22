@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getAllProducts } from "../../../api/productsApi";
-import { Product } from "../../../api/types";
+import { TProducts } from "../../../api/types";
 import { TCategories } from "./types";
 
 const CategoriesSection: React.FC = () => {
-  const { data: products } = useQuery<Product[], Error>({
+  const { data: products } = useQuery<TProducts[], Error>({
     queryKey: ["products"],
     queryFn: getAllProducts,
   });
