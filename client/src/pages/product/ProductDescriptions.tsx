@@ -27,6 +27,7 @@ const ProductDescriptions = ({
       </div>
       <p className="font-semibold text-2xl">${price?.toLocaleString()}</p>
       <p className="text-sm">{description}</p>
+      <button>1</button>
     </div>
   );
 };
