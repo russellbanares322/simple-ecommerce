@@ -27,7 +27,12 @@ const ProductDescriptions = ({
       </div>
       <p className="font-semibold text-2xl">${price?.toLocaleString()}</p>
       <p className="text-sm">{description}</p>
-      <button>1</button>
+      <p className="text-sm font-medium">Quantity</p>
+      <div className="flex items-center justify-start gap-2 bg-whitesmoke rounded-2xl">
+        <button className="px-4 py-1 text-lg"> - </button>
+        <p>2</p>
+        <button className="px-4 py-1 text-lg"> + </button>
+      </div>
     </div>
   );
 };

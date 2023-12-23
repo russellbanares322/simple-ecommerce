@@ -12,6 +12,7 @@ export default {
         cyan: "#A5D1E6",
         brown: "#C6B195",
         "secondary-green": "#08AC0A",
+        whitesmoke: "#F0F0F0",
       },
       fontFamily: {
         poppins: ['"Poppins", sans-serif'],
